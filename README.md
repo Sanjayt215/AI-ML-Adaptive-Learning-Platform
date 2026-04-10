@@ -23,7 +23,7 @@ It combines a React frontend with a Flask backend to deliver an interactive lear
 ## Screenshots
 
 ### Dashboard Overview
-![Dashboard Overview](screenshots/dashboard/01-dashboard.png)
+![Dashboard Overview](screenshots/home/01-dashboard.png)
 
 ### Goal Selection
 ![Goal Selection](screenshots/onboarding/02-goal-selection.png)
