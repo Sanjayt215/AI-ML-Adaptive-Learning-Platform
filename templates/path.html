@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 class="mb-4">Proper learning order</h2>
+<div class="timeline">{% for step in steps %}
+  <div class="timeline-item card border-0 shadow-sm mb-3"><div class="card-body">
+    <div class="d-flex justify-content-between flex-wrap gap-2"><h4>{{ loop.index }}. {{ step.topic.title() }}</h4><span class="badge text-bg-primary">{{ step.level.title() }}</span></div>
+    <p class="mb-2"><strong>Mini project:</strong> {{ step.project }}</p>
+    <div class="row g-3">
+      <div class="col-lg-6"><h6>Recommended videos</h6><ol class="ps-3">{% for v in step.videos %}<li><a href="{{ v.url }}" target="_blank">{{ v.title }}</a> <span class="text-muted">— {{ v.channel }}</span></li>{% endfor %}</ol></div>
+      <div class="col-lg-6"><h6>Certificate courses</h6><ul>{% for c in step.courses %}<li><a href="{{ c.url }}" target="_blank">{{ c.title }}</a> <span class="text-muted">— {{ c.provider }}</span></li>{% endfor %}</ul></div>
+    </div>
+  </div></div>{% endfor %}
+</div>
+{% endblock %}

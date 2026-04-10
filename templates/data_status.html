@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 class="mb-4">Data and model status</h2>
+<div class="row g-4">
+  <div class="col-lg-6">
+    <div class="card border-0 shadow-sm h-100"><div class="card-body">
+      <h4>Dataset source</h4>
+      <p><strong>Real Kaggle data active:</strong> {{ 'Yes' if data_info.real_data_used else 'No, sample fallback' }}</p>
+      <p><strong>Rows used:</strong> {{ data_info.rows }}</p>
+      <p><strong>Sources:</strong> {{ data_info.sources|join(', ') }}</p>
+      <p class="small text-muted mb-0">Main path: {{ data_info.main_path }}</p>
+      <p class="small text-muted">Backup path: {{ data_info.backup_path }}</p>
+      <p class="small text-muted mb-0">Heart dataset loaded: {{ 'Yes' if heart_available else 'No' }}</p>
+    </div></div>
+  </div>
+  <div class="col-lg-6">
+    <div class="card border-0 shadow-sm h-100"><div class="card-body">
+      <h4>Classification benchmark</h4>
+      <ul class="mb-0">
+      {% for name, score in leaderboard.items() %}
+        <li><strong>{{ name }}</strong> — {{ score }}</li>
+      {% endfor %}
+      </ul>
+    </div></div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-4">
+  <div>
+    <h2 class="mb-1">Student Dashboard</h2>
+    <p class="text-muted mb-0">Average quiz score: <strong>{{ avg_score }}</strong> • Data source: <strong>{{ 'Real Kaggle data' if real_data_used else 'Sample fallback' }}</strong></p>
+  </div>
+  <div class="d-flex gap-2 flex-wrap">
+    <a href="{{ url_for('resources') }}" class="btn btn-primary">Open Resources</a>
+    <a href="{{ url_for('learning_path') }}" class="btn btn-outline-primary">Open Learning Path</a>
+    <a href="{{ url_for('reset') }}" class="btn btn-outline-danger">Start over</a>
+  </div>
+</div>
+<div class="row g-3 mb-4">
+  <div class="col-md-3"><div class="card stat-card"><div class="card-body"><h6>Topics chosen</h6><h3>{{ profile.topics|length }}</h3></div></div></div>
+  <div class="col-md-3"><div class="card stat-card"><div class="card-body"><h6>Best classifier</h6><h3>{{ model_name }}</h3></div></div></div>
+  <div class="col-md-3"><div class="card stat-card"><div class="card-body"><h6>AutoML engine</h6><h3>{{ automl_engine }}</h3></div></div></div>
+  <div class="col-md-3"><div class="card stat-card"><div class="card-body"><h6>Rows trained</h6><h3>{{ dataset_summary.rows }}</h3></div></div></div>
+</div>
+<div class="row g-4">
+  <div class="col-lg-8">
+    <div class="card border-0 shadow-sm h-100"><div class="card-body">
+      <h4 class="mb-3">Assessment result by topic</h4>
+      <div class="table-responsive">
+        <table class="table align-middle">
+          <thead><tr><th>Topic</th><th>Quiz Score</th><th>Predicted Level</th><th>Predicted Exam Score</th></tr></thead>
+          <tbody>
+            {% for item in assessment %}
+            <tr>
+              <td>{{ item.topic.title() }}</td>
+              <td>{{ item.score_pct }}</td>
+              <td><span class="badge text-bg-secondary">{{ item.predicted_level.title() }}</span></td>
+              <td>{{ item.predicted_exam_score }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div></div>
+  </div>
+  <div class="col-lg-4">
+    <div class="card border-0 shadow-sm mb-4"><div class="card-body">
+      <h4>Focus next</h4>
+      <p><strong>Weakest areas:</strong> {{ weak|join(', ') if weak else 'None. Move deeper into advanced resources.' }}</p>
+      <p><strong>Strongest areas:</strong> {{ strengths|join(', ') if strengths else 'Keep practicing to build stronger areas.' }}</p>
+      <p class="mb-0"><strong>Heart dataset loaded:</strong> {{ 'Yes' if heart_available else 'No' }}</p>
+    </div></div>
+    <div class="card border-0 shadow-sm"><div class="card-body">
+      <h4>Modern features added</h4>
+      <ul class="mb-0">{% for feature in modern_features %}<li><strong>{{ feature.name }}</strong> — {{ feature.why }}</li>{% endfor %}</ul>
+    </div></div>
+  </div>
+</div>
+<div class="card border-0 shadow-sm mt-4"><div class="card-body">
+  <h4 class="mb-3">Classification benchmark</h4>
+  <div class="row g-3">{% for name, score in model_scores.items() %}<div class="col-md-4"><div class="p-3 rounded benchmark-box"><strong>{{ name }}</strong><div>{{ score }}</div></div></div>{% endfor %}</div>
+</div></div>
+{% endblock %}

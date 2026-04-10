@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-lg-9">
+    <div class="card shadow-sm border-0">
+      <div class="card-body p-4">
+        <h2 class="mb-3">Create your personalized study plan</h2>
+        <form method="post">
+          <div class="mb-3">
+            <label class="form-label">Paste your syllabus or topic list</label>
+            <textarea class="form-control" name="syllabus_text" rows="8" placeholder="Example: Python, data preprocessing, linear regression, logistic regression, SVM, KNN, decision tree, clustering, PCA, LDA, Naive Bayes, neural networks, AutoML"></textarea>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Goal or wish to learn</label>
+            <input class="form-control" name="target_goal" placeholder="Example: I want to learn ML in proper order and build real projects">
+          </div>
+          <button class="btn btn-primary">Analyze syllabus and continue</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

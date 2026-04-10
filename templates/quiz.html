@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 class="mb-3">Knowledge Assessment Quiz</h2>
+<p class="text-muted">The quiz is created from your selected topics. Answer honestly so the system can recommend the right learning level.</p>
+<form method="post">
+  {% for item in quiz_items %}
+  <div class="card mb-3 border-0 shadow-sm">
+    <div class="card-body">
+      <span class="badge bg-primary-subtle text-primary-emphasis mb-2">{{ item.topic.title() }}</span>
+      <h5>{{ loop.index }}. {{ item.q }}</h5>
+      {% for option in item.options %}
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="{{ item.topic }}_{{ item.index }}" value="{{ option }}" id="q{{ item.topic }}_{{ item.index }}_{{ loop.index0 }}">
+        <label class="form-check-label" for="q{{ item.topic }}_{{ item.index }}_{{ loop.index0 }}">{{ option }}</label>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% endfor %}
+  <button class="btn btn-success">Submit and generate dashboard</button>
+</form>
+{% endblock %}

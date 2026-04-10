@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 class="mb-2">Recommended videos, projects, verified courses, and Kaggle datasets</h2>
+<p class="text-muted mb-4">Video mode: <strong>{{ 'Live YouTube API available' if youtube_live else 'Dataset mode only until API key is added' }}</strong></p>
+<div class="card border-0 shadow-sm mb-4"><div class="card-body">
+  <form class="row g-3" method="get">
+    <div class="col-md-3"><label class="form-label">Topic</label><select class="form-select" name="topic">{% for topic in topic_options %}<option value="{{ topic }}" {% if selected.topic == topic %}selected{% endif %}>{{ topic.title() }}</option>{% endfor %}</select></div>
+    <div class="col-md-3"><label class="form-label">Course provider</label><select class="form-select" name="provider">{% for provider in filters.providers %}<option value="{{ provider }}" {% if selected.provider == provider %}selected{% endif %}>{{ provider }}</option>{% endfor %}</select></div>
+    <div class="col-md-2"><label class="form-label">Level</label><select class="form-select" name="level">{% for level in filters.levels %}<option value="{{ level }}" {% if selected.level == level %}selected{% endif %}>{{ level.title() }}</option>{% endfor %}</select></div>
+    <div class="col-md-2"><label class="form-label">Video mode</label><select class="form-select" name="video_mode">{% for mode in filters.video_modes %}<option value="{{ mode }}" {% if selected.video_mode == mode %}selected{% endif %}>{{ mode.title() }}</option>{% endfor %}</select></div>
+    <div class="col-md-2 d-flex align-items-end"><button class="btn btn-primary w-100">Apply filters</button></div>
+  </form>
+</div></div>
+<div class="row g-4">{% for card in resource_cards %}
+  <div class="col-12"><div class="card border-0 shadow-sm"><div class="card-body">
+    <div class="d-flex justify-content-between flex-wrap gap-2 mb-2"><h4>{{ card.topic.title() }}</h4><span class="badge text-bg-secondary">{{ card.level.title() }}</span></div>
+    <p class="small text-muted">Video source: {{ card.video_source }}</p>
+    <p><strong>Mini project:</strong> {{ card.project }}</p>
+    <div class="row g-4">
+      <div class="col-lg-4">
+        <h5>Top videos in order</h5>
+        {% if card.videos %}<div class="ratio ratio-16x9 mb-3"><iframe src="{{ card.videos[0].url|youtube_embed }}" title="Top video" allowfullscreen></iframe></div>{% endif %}
+        <ol class="ps-3">{% for v in card.videos %}<li class="mb-3"><a href="{{ v.url }}" target="_blank" class="fw-semibold">{{ v.title }}</a><div class="small text-muted">{{ v.channel }}</div><div class="small text-muted">{% if v.viewCount %}{{ v.viewCount }} views{% endif %}{% if v.duration %} • {{ v.duration }}{% endif %}{% if v.rank_score %} • rank {{ v.rank_score }}{% endif %}</div></li>{% endfor %}</ol>
+      </div>
+      <div class="col-lg-4"><h5>Verified courses</h5><ul class="list-unstyled">{% for c in card.courses %}<li class="mb-3 pb-2 border-bottom"><a href="{{ c.url }}" target="_blank" class="fw-semibold">{{ c.title }}</a><div class="small text-muted">{{ c.provider }} • {{ c.level|title if c.level else card.level|title }}</div><div class="small text-muted">{% if c.rating %}⭐ {{ c.rating }}{% endif %}{% if c.learners %} • {{ c.learners }} learners{% endif %}{% if c.duration_hours %} • {{ c.duration_hours }} hrs{% endif %}{% if c.rank_score %} • rank {{ c.rank_score }}{% endif %}</div><div class="small text-muted">Certificate: {{ 'Yes' if c.certificate else 'No' }} • Verified: {{ 'Yes' if c.verified else 'No' }}</div></li>{% endfor %}</ul></div>
+      <div class="col-lg-4"><h5>Kaggle datasets for practice</h5><ul class="list-unstyled">{% for d in card.datasets %}<li class="mb-3 pb-2 border-bottom"><a href="{{ d.url }}" target="_blank" class="fw-semibold">{{ d.title }}</a><div class="small text-muted">{{ d.source }} • {{ d.level|title }}</div><div class="small text-muted">{{ d.description }}</div></li>{% endfor %}</ul></div>
+    </div>
+  </div></div></div>{% endfor %}
+</div>
+{% endblock %}

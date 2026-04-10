@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-lg-8">
+    <div class="card border-0 shadow-sm">
+      <div class="card-body p-4">
+        <h2 class="mb-3">AI Tutor</h2>
+        <p class="text-muted">Ask things like: What is my weakest topic? What should I learn next? Suggest a certificate course.</p>
+        <form method="post" class="mb-3">
+          <input class="form-control" name="question" placeholder="Ask your learning question here">
+        </form>
+        {% if answer %}
+        <div class="alert alert-info mb-0">{{ answer }}</div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

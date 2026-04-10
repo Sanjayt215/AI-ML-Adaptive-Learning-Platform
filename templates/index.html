@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="hero p-5 rounded-4 mb-4">
+  <div class="row align-items-center">
+    <div class="col-lg-8">
+      <h1 class="display-5 fw-bold">AutoML-Driven Adaptive Learning Pathway Recommendation System</h1>
+      <p class="lead mt-3">Paste a syllabus, assess student knowledge, predict readiness with ML/AutoML, and recommend learning in the correct order using videos, courses, datasets, and mini projects.</p>
+      <div class="d-flex gap-3 mt-4 flex-wrap">
+        <a class="btn btn-primary btn-lg" href="{{ url_for('start') }}">Build My Learning Plan</a>
+        <a class="btn btn-outline-light btn-lg" href="{{ url_for('data_status') }}">View Data + Models</a>
+      </div>
+    </div>
+    <div class="col-lg-4 mt-4 mt-lg-0">
+      <div class="card glass border-0"><div class="card-body">
+        <h5 class="card-title">Current engine status</h5>
+        <p class="mb-2"><strong>Best classifier:</strong> {{ model_name }}</p>
+        <p class="mb-2"><strong>Engine:</strong> {{ automl_engine }}</p>
+        <p class="mb-2"><strong>Data mode:</strong> {{ 'Real Kaggle data' if real_data_used else 'Sample fallback' }}</p>
+        <p class="mb-0"><strong>Video mode:</strong> {{ 'Live YouTube API available' if youtube_live_enabled else 'Curated CSV fallback' }}</p>
+      </div></div>
+    </div>
+  </div>
+</div>
+<div class="row g-4">
+  <div class="col-md-3"><div class="card h-100 feature-card"><div class="card-body"><h5>1. Paste syllabus</h5><p>Paste the topics you want to learn or your full syllabus.</p></div></div></div>
+  <div class="col-md-3"><div class="card h-100 feature-card"><div class="card-body"><h5>2. Take quiz</h5><p>The app checks current knowledge topic by topic using short questions.</p></div></div></div>
+  <div class="col-md-3"><div class="card h-100 feature-card"><div class="card-body"><h5>3. Get ranked resources</h5><p>See hybrid recommendations from live YouTube, course CSV, and Kaggle datasets.</p></div></div></div>
+  <div class="col-md-3"><div class="card h-100 feature-card"><div class="card-body"><h5>4. Track data status</h5><p>Check whether the app is using real Kaggle datasets and which model won.</p></div></div></div>
+</div>
+{% endblock %}
