@@ -23,7 +23,7 @@ It combines a React frontend with a Flask backend to deliver an interactive lear
 ## Screenshots
 
 ### Dashboard Overview
-![Dashboard Overview](screenshots/dashboard/01-dashboard-overview.png)
+![Dashboard Overview](screenshots/dashboard/01-dashboard.png)
 
 ### Goal Selection
 ![Goal Selection](screenshots/onboarding/02-goal-selection.png)
@@ -35,10 +35,10 @@ It combines a React frontend with a Flask backend to deliver an interactive lear
 ![Adaptive Quiz](screenshots/quiz/04-adaptive-quiz.png)
 
 ### Topic Assessment Results
-![Topic Assessment Results](screenshots/dashboard/05-topic-assessment-results.png)
+![Topic Assessment Results](screenshots/dashboardresults/05-topic-assessment-results.png)
 
 ### Resources: Courses and Datasets
-![Resources](screenshots/resources/06-resources-courses-datasets.png)
+![Resources](screenshots/dashboardresults/06-resources-courses-datasets.png)
 
 ### Video Progress Tracking
 ![Video Progress Tracking](screenshots/resources/07-video-progress-tracking.png)
@@ -47,7 +47,7 @@ It combines a React frontend with a Flask backend to deliver an interactive lear
 ![Learning Path](screenshots/path/08-learning-path.png)
 
 ### AI Tutor
-![AI Tutor](screenshots/tutor/09-ai-tutor.png)
+![AI Tutor](screenshots/aitutor/09-ai-tutor.png)
 
 ---
 
