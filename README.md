@@ -1,6 +1,6 @@
-# AutoLearn AI Tutor
+# AI & ML Adaptive Learning Platform
 
-AutoLearn AI Tutor is a full-stack AI-powered personalized learning platform that helps students create structured study plans, take adaptive quizzes, track learning progress, and discover curated machine learning and deep learning resources.
+AI & ML Adaptive Learning Platform is a full-stack AI-powered personalized learning platform that helps students create structured study plans, take adaptive quizzes, track learning progress, and discover curated machine learning and deep learning resources.
 
 It combines a React frontend with a Flask backend to deliver an interactive learning experience with analytics, resource recommendations, and an LLM-ready tutor workflow.
 
@@ -89,7 +89,7 @@ It combines a React frontend with a Flask backend to deliver an interactive lear
 ## Project Structure
 
 ```text
-autolearn-ai-tutor/
+ai-ml-adaptive-learning-platform/
 ├── frontend/
 │   ├── public/
 │   ├── src/
