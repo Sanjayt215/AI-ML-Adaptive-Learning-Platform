@@ -40,14 +40,16 @@ def _preprocessor(df: pd.DataFrame):
 
 
 def _baseline_models(df: pd.DataFrame) -> LearningModelBundle:
+    # Cap training sample size to 5,000 to ensure fast, deterministic startup while maintaining strong model accuracy.
+    if len(df) > 5000:
+        df = df.sample(n=5000, random_state=42)
     pre = _preprocessor(df)
     x_train, x_test, y_train, y_test = train_test_split(df[FEATURES], df[CLASS_TARGET], test_size=0.2, random_state=42, stratify=df[CLASS_TARGET])
     class_models = {
         'Logistic Regression': LogisticRegression(max_iter=1500),
-        'SVM': SVC(kernel='rbf', probability=True),
         'KNN': KNeighborsClassifier(n_neighbors=7),
-        'Random Forest': RandomForestClassifier(n_estimators=220, random_state=42),
-        'Extra Trees': ExtraTreesClassifier(n_estimators=260, random_state=42),
+        'Random Forest': RandomForestClassifier(n_estimators=100, random_state=42),
+        'Extra Trees': ExtraTreesClassifier(n_estimators=100, random_state=42),
         'Gradient Boosting': GradientBoostingClassifier(random_state=42),
     }
     scores = {}
@@ -65,8 +67,8 @@ def _baseline_models(df: pd.DataFrame) -> LearningModelBundle:
         'Linear Regression': LinearRegression(),
         'Ridge': Ridge(alpha=1.0),
         'Lasso': Lasso(alpha=0.01),
-        'Random Forest Regressor': RandomForestRegressor(n_estimators=220, random_state=42),
-        'Extra Trees Regressor': ExtraTreesRegressor(n_estimators=260, random_state=42),
+        'Random Forest Regressor': RandomForestRegressor(n_estimators=100, random_state=42),
+        'Extra Trees Regressor': ExtraTreesRegressor(n_estimators=100, random_state=42),
     }
     reg_scores = {}
     fitted_regs = {}

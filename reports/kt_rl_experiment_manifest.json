@@ -1,0 +1,59 @@
+{
+  "manifest_title": "AutoLearn KT-RL Experiment Provenance & Model Manifest",
+  "version": "1.0.0",
+  "timestamp": "2026-10-20T13:35:00Z",
+  "researchers": [
+    "T. Sanjay (E0124009)",
+    "M. Nithish Kumar (E0124027)"
+  ],
+  "environment": {
+    "python_version": "3.13.5",
+    "os": "Windows (AMD64)",
+    "pytorch_version": "2.14.1+cpu",
+    "numpy_version": "2.4.4",
+    "scikit_learn_version": "1.8.0",
+    "flask_version": "3.0.3"
+  },
+  "models": [
+    {
+      "model_id": "dueling_dqn_final",
+      "filepath": "models/dqn/dueling_dqn_final.pt",
+      "architecture": "Dueling Double Deep Q-Network with Prerequisite Action Masking",
+      "schema_version": "kt_rl_dueling_dqn_v1",
+      "input_dim": 99,
+      "output_dim": 52,
+      "hidden_dim": 128,
+      "training_episodes": 120,
+      "training_seed": 42,
+      "status": "EXPERIMENTAL_RESEARCH_ARTIFACT",
+      "production_deployed": false
+    }
+  ],
+  "ablations": [
+    {
+      "ablation_id": "target_bootstrapping",
+      "variants": ["double_dqn", "standard_dqn"],
+      "finding": "Double DQN achieved +1.08 higher cumulative reward and reduced maximization bias."
+    },
+    {
+      "ablation_id": "action_masking",
+      "variants": ["prereq_masked", "unconstrained"],
+      "finding": "Unconstrained selection incurred 93 prerequisite violations and dropped reward from 33.27 to 18.46."
+    },
+    {
+      "ablation_id": "reward_components",
+      "variants": ["full_reward", "no_info_gain", "no_zpd_match", "no_failure_penalty"],
+      "finding": "Information entropy and ZPD Gaussian match contribute 16.3 points of reward."
+    },
+    {
+      "ablation_id": "seed_sensitivity",
+      "seeds": [42, 123, 777],
+      "finding": "Policy rewards remained stable across training seeds (27.89 to 28.94)."
+    }
+  ],
+  "production_services": {
+    "unified_adaptive_recommender": "services/adaptive_recommender.py",
+    "bkt_service": "services/bkt_service.py",
+    "learning_store": "services/learning_store.py"
+  }
+}

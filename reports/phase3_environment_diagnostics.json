@@ -1,0 +1,1139 @@
+{
+  "evaluation_config": {
+    "seeds": [
+      101,
+      202,
+      303,
+      404,
+      505
+    ],
+    "archetypes": [
+      "fast_learner",
+      "typical_learner",
+      "struggling_learner",
+      "inconsistent_learner"
+    ],
+    "max_steps_per_episode": 25,
+    "total_episodes_per_policy": 20,
+    "num_canonical_items": 52,
+    "num_topics": 30
+  },
+  "policies": {
+    "random_eligible": {
+      "summary": {
+        "mean_ground_truth_mastery_gain": -0.026,
+        "std_ground_truth_mastery_gain": 0.0391,
+        "mean_cumulative_reward": 32.7348,
+        "std_cumulative_reward": 8.4195,
+        "mean_accuracy": 0.428,
+        "total_invalid_actions": 0,
+        "mean_bkt_mae_vs_truth": 0.1983
+      },
+      "by_archetype": {
+        "fast_learner": {
+          "mean_mastery_gain": 0.034,
+          "std_mastery_gain": 0.0072,
+          "mean_reward": 44.1786,
+          "mean_accuracy": 0.464
+        },
+        "typical_learner": {
+          "mean_mastery_gain": -0.0309,
+          "std_mastery_gain": 0.0076,
+          "mean_reward": 34.208,
+          "mean_accuracy": 0.44
+        },
+        "struggling_learner": {
+          "mean_mastery_gain": -0.0343,
+          "std_mastery_gain": 0.0049,
+          "mean_reward": 21.1588,
+          "mean_accuracy": 0.352
+        },
+        "inconsistent_learner": {
+          "mean_mastery_gain": -0.0728,
+          "std_mastery_gain": 0.0099,
+          "mean_reward": 31.394,
+          "mean_accuracy": 0.456
+        }
+      },
+      "episodes": [
+        {
+          "seed": 101,
+          "archetype": "fast_learner",
+          "steps": 25,
+          "total_reward": 45.0854,
+          "accuracy": 0.52,
+          "invalid_actions": 0,
+          "init_hidden_mastery": 0.3328,
+          "final_hidden_mastery": 0.3734,
+          "ground_truth_mastery_gain": 0.0406,
+          "mean_bkt_mae": 0.17
+        },
+        {
+          "seed": 202,
+          "archetype": "fast_learner",
+          "steps": 25,
+          "total_reward": 42.9782,
+          "accuracy": 0.44,
+          "invalid_actions": 0,
+          "init_hidden_mastery": 0.3447,
+          "final_hidden_mastery": 0.3719,
+          "ground_truth_mastery_gain": 0.0272,
+          "mean_bkt_mae": 0.1863
+        },
+        {
+          "seed": 303,
+          "archetype": "fast_learner",
+          "steps": 25,
+          "total_reward": 42.0097,
+          "accuracy": 0.44,
+          "invalid_actions": 0,
+          "init_hidden_mastery": 0.3585,
+          "final_hidden_mastery": 0.3836,
+          "ground_truth_mastery_gain": 0.0251,
+          "mean_bkt_mae": 0.1826
+        },
+        {
+          "seed": 404,
+          "archetype": "fast_learner",
+          "steps": 25,
+          "total_reward": 48.6109,
+          "accuracy": 0.48,
+          "invalid_actions": 0,
+          "init_hidden_mastery": 0.3186,
+          "final_hidden_mastery": 0.3623,
+          "ground_truth_mastery_gain": 0.0436,
+          "mean_bkt_mae": 0.1879
+        },
+        {
+          "seed": 505,
+          "archetype": "fast_learner",
+          "steps": 25,
+          "total_reward": 42.209,
+          "accuracy": 0.44,
+          "invalid_actions": 0,
+          "init_hidden_mastery": 0.319,
+          "final_hidden_mastery": 0.3523,
+          "ground_truth_mastery_gain": 0.0333,
+          "mean_bkt_mae": 0.1925
+        },
+        {
+          "seed": 101,
+          "archetype": "typical_learner",
+          "steps": 25,
+          "total_reward": 36.321,
+          "accuracy": 0.56,
+          "invalid_actions": 0,
+          "init_hidden_mastery": 0.209,
+          "final_hidden_mastery": 0.1852,
+          "ground_truth_mastery_gain": -0.0238,
+          "mean_bkt_mae": 0.2247
+        },
+        {
+          "seed": 202,
+          "archetype": "typical_learner",
+          "steps": 25,
+          "total_reward": 34.0668,
+          "accuracy": 0.44,
+          "invalid_actions": 0,
+          "init_hidden_mastery": 0.2176,
+          "final_hidden_mastery": 0.1811,
+          "ground_truth_mastery_gain": -0.0365,
+          "mean_bkt_mae": 0.1899
+        },
+        {
+          "seed": 303,
+          "archetype": "typical_learner",
+          "steps": 25,
+          "total_reward": 33.3046,
+          "accuracy": 0.36,
+          "invalid_actions": 0,
+          "init_hidden_mastery": 0.2265,
+          "final_hidden_mastery": 0.1834,
+          "ground_truth_mastery_gain": -0.043,
+          "mean_bkt_mae": 0.1959
+        },
+        {
+          "seed": 404,
+          "archetype": "typical_learner",
+          "steps": 25,
+          "total_reward": 33.9503,
+          "accuracy": 0.4,
+          "invalid_actions": 0,
+          "init_hidden_mastery": 0.1989,
+          "final_hidden_mastery": 0.1718,
+          "ground_truth_mastery_gain": -0.0271,
+          "mean_bkt_mae": 0.1631
+        },
+        {
+          "seed": 505,
+          "archetype": "typical_learner",
+          "steps": 25,
+          "total_reward": 33.3972,
+          "accuracy": 0.44,
+          "invalid_actions": 0,
+          "init_hidden_mastery": 0.1963,
+          "final_hidden_mastery": 0.1721,
+          "ground_truth_mastery_gain": -0.0242,
+          "mean_bkt_mae": 0.191
+        },
+        {
+          "seed": 101,
+          "archetype": "struggling_learner",
+          "steps": 25,
+          "total_reward": 19.876,
+          "accuracy": 0.4,
+          "invalid_actions": 0,
+          "init_hidden_mastery": 0.1233,
+          "final_hidden_mastery": 0.088,
+          "ground_truth_mastery_gain": -0.0353,
+          "mean_bkt_mae": 0.2311
+        },
+        {
+          "seed": 202,
+          "archetype": "struggling_learner",
+          "steps": 25,
+          "total_reward": 21.3678,
+          "accuracy": 0.36,
+          "invalid_actions": 0,
+          "init_hidden_mastery": 0.1233,
+          "final_hidden_mastery": 0.0862,
+          "ground_truth_mastery_gain": -0.0371,
+          "mean_bkt_mae": 0.2151
+        },
+        {
+          "seed": 303,
+          "archetype": "struggling_learner",
+          "steps": 25,
+          "total_reward": 24.0918,
+          "accuracy": 0.36,
+          "invalid_actions": 0,
+          "init_hidden_mastery": 0.1304,
+          "final_hidden_mastery": 0.089,
+          "ground_truth_mastery_gain": -0.0415,
+          "mean_bkt_mae": 0.2496
+        },
+        {
+          "seed": 404,
+          "archetype": "struggling_learner",
+          "steps": 25,
+          "total_reward": 23.6295,
+          "accuracy": 0.36,
+          "invalid_actions": 0,
+          "init_hidden_mastery": 0.1133,
+          "final_hidden_mastery": 0.0845,
+          "ground_truth_mastery_gain": -0.0288,
+          "mean_bkt_mae": 0.1912
+        },
+        {
+          "seed": 505,
+          "archetype": "struggling_learner",
+          "steps": 25,
+          "total_reward": 16.8287,
+          "accuracy": 0.28,
+          "invalid_actions": 0,
+          "init_hidden_mastery": 0.1122,
+          "final_hidden_mastery": 0.0834,
+          "ground_truth_mastery_gain": -0.0288,
+          "mean_bkt_mae": 0.1565
+        },
+        {
+          "seed": 101,
+          "archetype": "inconsistent_learner",
+          "steps": 25,
+          "total_reward": 31.406,
+          "accuracy": 0.6,
+          "invalid_actions": 0,
+          "init_hidden_mastery": 0.2347,
+          "final_hidden_mastery": 0.1654,
+          "ground_truth_mastery_gain": -0.0693,
+          "mean_bkt_mae": 0.2595
+        },
+        {
+          "seed": 202,
+          "archetype": "inconsistent_learner",
+          "steps": 25,
+          "total_reward": 31.164,
+          "accuracy": 0.44,
+          "invalid_actions": 0,
+          "init_hidden_mastery": 0.2408,
+          "final_hidden_mastery": 0.1608,
+          "ground_truth_mastery_gain": -0.08,
+          "mean_bkt_mae": 0.2033
+        },
+        {
+          "seed": 303,
+          "archetype": "inconsistent_learner",
+          "steps": 25,
+          "total_reward": 32.3591,
+          "accuracy": 0.4,
+          "invalid_actions": 0,
+          "init_hidden_mastery": 0.2539,
+          "final_hidden_mastery": 0.1657,
+          "ground_truth_mastery_gain": -0.0882,
+          "mean_bkt_mae": 0.2078
+        },
+        {
+          "seed": 404,
+          "archetype": "inconsistent_learner",
+          "steps": 25,
+          "total_reward": 31.3146,
+          "accuracy": 0.4,
+          "invalid_actions": 0,
+          "init_hidden_mastery": 0.2176,
+          "final_hidden_mastery": 0.1523,
+          "ground_truth_mastery_gain": -0.0653,
+          "mean_bkt_mae": 0.166
+        },
+        {
+          "seed": 505,
+          "archetype": "inconsistent_learner",
+          "steps": 25,
+          "total_reward": 30.7262,
+          "accuracy": 0.44,
+          "invalid_actions": 0,
+          "init_hidden_mastery": 0.2138,
+          "final_hidden_mastery": 0.1523,
+          "ground_truth_mastery_gain": -0.0614,
+          "mean_bkt_mae": 0.2013
+        }
+      ]
+    },
+    "weakest_bkt_kc": {
+      "summary": {
+        "mean_ground_truth_mastery_gain": -0.0273,
+        "std_ground_truth_mastery_gain": 0.0389,
+        "mean_cumulative_reward": 25.7319,
+        "std_cumulative_reward": 11.0372,
+        "mean_accuracy": 0.458,
+        "total_invalid_actions": 0,
+        "mean_bkt_mae_vs_truth": 0.1665
+      },
+      "by_archetype": {
+        "fast_learner": {
+          "mean_mastery_gain": 0.0319,
+          "std_mastery_gain": 0.01,
+          "mean_reward": 39.9505,
+          "mean_accuracy": 0.512
+        },
+        "typical_learner": {
+          "mean_mastery_gain": -0.033,
+          "std_mastery_gain": 0.0073,
+          "mean_reward": 26.4699,
+          "mean_accuracy": 0.448
+        },
+        "struggling_learner": {
+          "mean_mastery_gain": -0.0342,
+          "std_mastery_gain": 0.0051,
+          "mean_reward": 11.307,
+          "mean_accuracy": 0.408
+        },
+        "inconsistent_learner": {
+          "mean_mastery_gain": -0.0741,
+          "std_mastery_gain": 0.0103,
+          "mean_reward": 25.2,
+          "mean_accuracy": 0.464
+        }
+      },
+      "episodes": [
+        {
+          "seed": 101,
+          "archetype": "fast_learner",
+          "steps": 25,
+          "total_reward": 50.2492,
+          "accuracy": 0.68,
+          "invalid_actions": 0,
+          "init_hidden_mastery": 0.3328,
+          "final_hidden_mastery": 0.3826,
+          "ground_truth_mastery_gain": 0.0498,
+          "mean_bkt_mae": 0.1142
+        },
+        {
+          "seed": 202,
+          "archetype": "fast_learner",
+          "steps": 25,
+          "total_reward": 37.2249,
+          "accuracy": 0.48,
+          "invalid_actions": 0,
+          "init_hidden_mastery": 0.3447,
+          "final_hidden_mastery": 0.3686,
+          "ground_truth_mastery_gain": 0.0239,
+          "mean_bkt_mae": 0.1771
+        },
+        {
+          "seed": 303,
+          "archetype": "fast_learner",
+          "steps": 25,
+          "total_reward": 37.2159,
+          "accuracy": 0.48,
+          "invalid_actions": 0,
+          "init_hidden_mastery": 0.3585,
+          "final_hidden_mastery": 0.3804,
+          "ground_truth_mastery_gain": 0.0219,
+          "mean_bkt_mae": 0.1869
+        },
+        {
+          "seed": 404,
+          "archetype": "fast_learner",
+          "steps": 25,
+          "total_reward": 35.3603,
+          "accuracy": 0.48,
+          "invalid_actions": 0,
+          "init_hidden_mastery": 0.3186,
+          "final_hidden_mastery": 0.3535,
+          "ground_truth_mastery_gain": 0.0349,
+          "mean_bkt_mae": 0.1694
+        },
+        {
+          "seed": 505,
+          "archetype": "fast_learner",
+          "steps": 25,
+          "total_reward": 39.7024,
+          "accuracy": 0.44,
+          "invalid_actions": 0,
+          "init_hidden_mastery": 0.319,
+          "final_hidden_mastery": 0.3482,
+          "ground_truth_mastery_gain": 0.0292,
+          "mean_bkt_mae": 0.1574
+        },
+        {
+          "seed": 101,
+          "archetype": "typical_learner",
+          "steps": 25,
+          "total_reward": 31.4643,
+          "accuracy": 0.56,
+          "invalid_actions": 0,
+          "init_hidden_mastery": 0.209,
+          "final_hidden_mastery": 0.1826,
+          "ground_truth_mastery_gain": -0.0264,
+          "mean_bkt_mae": 0.1944
+        },
+        {
+          "seed": 202,
+          "archetype": "typical_learner",
+          "steps": 25,
+          "total_reward": 27.7466,
+          "accuracy": 0.44,
+          "invalid_actions": 0,
+          "init_hidden_mastery": 0.2176,
+          "final_hidden_mastery": 0.1783,
+          "ground_truth_mastery_gain": -0.0393,
+          "mean_bkt_mae": 0.1544
+        },
+        {
+          "seed": 303,
+          "archetype": "typical_learner",
+          "steps": 25,
+          "total_reward": 24.5594,
+          "accuracy": 0.4,
+          "invalid_actions": 0,
+          "init_hidden_mastery": 0.2265,
+          "final_hidden_mastery": 0.1822,
+          "ground_truth_mastery_gain": -0.0443,
+          "mean_bkt_mae": 0.162
+        },
+        {
+          "seed": 404,
+          "archetype": "typical_learner",
+          "steps": 25,
+          "total_reward": 21.6293,
+          "accuracy": 0.44,
+          "invalid_actions": 0,
+          "init_hidden_mastery": 0.1989,
+          "final_hidden_mastery": 0.1715,
+          "ground_truth_mastery_gain": -0.0274,
+          "mean_bkt_mae": 0.1585
+        },
+        {
+          "seed": 505,
+          "archetype": "typical_learner",
+          "steps": 25,
+          "total_reward": 26.95,
+          "accuracy": 0.4,
+          "invalid_actions": 0,
+          "init_hidden_mastery": 0.1963,
+          "final_hidden_mastery": 0.1685,
+          "ground_truth_mastery_gain": -0.0278,
+          "mean_bkt_mae": 0.1178
+        },
+        {
+          "seed": 101,
+          "archetype": "struggling_learner",
+          "steps": 25,
+          "total_reward": 17.5413,
+          "accuracy": 0.52,
+          "invalid_actions": 0,
+          "init_hidden_mastery": 0.1233,
+          "final_hidden_mastery": 0.0896,
+          "ground_truth_mastery_gain": -0.0337,
+          "mean_bkt_mae": 0.2318
+        },
+        {
+          "seed": 202,
+          "archetype": "struggling_learner",
+          "steps": 25,
+          "total_reward": 14.098,
+          "accuracy": 0.4,
+          "invalid_actions": 0,
+          "init_hidden_mastery": 0.1233,
+          "final_hidden_mastery": 0.086,
+          "ground_truth_mastery_gain": -0.0373,
+          "mean_bkt_mae": 0.1916
+        },
+        {
+          "seed": 303,
+          "archetype": "struggling_learner",
+          "steps": 25,
+          "total_reward": 6.9277,
+          "accuracy": 0.36,
+          "invalid_actions": 0,
+          "init_hidden_mastery": 0.1304,
+          "final_hidden_mastery": 0.0883,
+          "ground_truth_mastery_gain": -0.0422,
+          "mean_bkt_mae": 0.1637
+        },
+        {
+          "seed": 404,
+          "archetype": "struggling_learner",
+          "steps": 25,
+          "total_reward": 12.1317,
+          "accuracy": 0.44,
+          "invalid_actions": 0,
+          "init_hidden_mastery": 0.1133,
+          "final_hidden_mastery": 0.0851,
+          "ground_truth_mastery_gain": -0.0281,
+          "mean_bkt_mae": 0.1957
+        },
+        {
+          "seed": 505,
+          "archetype": "struggling_learner",
+          "steps": 25,
+          "total_reward": 5.8363,
+          "accuracy": 0.32,
+          "invalid_actions": 0,
+          "init_hidden_mastery": 0.1122,
+          "final_hidden_mastery": 0.0824,
+          "ground_truth_mastery_gain": -0.0297,
+          "mean_bkt_mae": 0.1324
+        },
+        {
+          "seed": 101,
+          "archetype": "inconsistent_learner",
+          "steps": 25,
+          "total_reward": 30.7605,
+          "accuracy": 0.6,
+          "invalid_actions": 0,
+          "init_hidden_mastery": 0.2347,
+          "final_hidden_mastery": 0.1649,
+          "ground_truth_mastery_gain": -0.0698,
+          "mean_bkt_mae": 0.2185
+        },
+        {
+          "seed": 202,
+          "archetype": "inconsistent_learner",
+          "steps": 25,
+          "total_reward": 24.9636,
+          "accuracy": 0.44,
+          "invalid_actions": 0,
+          "init_hidden_mastery": 0.2408,
+          "final_hidden_mastery": 0.1587,
+          "ground_truth_mastery_gain": -0.0821,
+          "mean_bkt_mae": 0.1613
+        },
+        {
+          "seed": 303,
+          "archetype": "inconsistent_learner",
+          "steps": 25,
+          "total_reward": 22.1446,
+          "accuracy": 0.4,
+          "invalid_actions": 0,
+          "init_hidden_mastery": 0.2539,
+          "final_hidden_mastery": 0.1639,
+          "ground_truth_mastery_gain": -0.09,
+          "mean_bkt_mae": 0.1656
+        },
+        {
+          "seed": 404,
+          "archetype": "inconsistent_learner",
+          "steps": 25,
+          "total_reward": 19.284,
+          "accuracy": 0.44,
+          "invalid_actions": 0,
+          "init_hidden_mastery": 0.2176,
+          "final_hidden_mastery": 0.1524,
+          "ground_truth_mastery_gain": -0.0651,
+          "mean_bkt_mae": 0.1504
+        },
+        {
+          "seed": 505,
+          "archetype": "inconsistent_learner",
+          "steps": 25,
+          "total_reward": 28.8472,
+          "accuracy": 0.44,
+          "invalid_actions": 0,
+          "init_hidden_mastery": 0.2138,
+          "final_hidden_mastery": 0.1504,
+          "ground_truth_mastery_gain": -0.0634,
+          "mean_bkt_mae": 0.1275
+        }
+      ]
+    },
+    "difficulty_ladder": {
+      "summary": {
+        "mean_ground_truth_mastery_gain": -0.0587,
+        "std_ground_truth_mastery_gain": 0.0239,
+        "mean_cumulative_reward": 11.8227,
+        "std_cumulative_reward": 3.9849,
+        "mean_accuracy": 0.662,
+        "total_invalid_actions": 0,
+        "mean_bkt_mae_vs_truth": 0.2224
+      },
+      "by_archetype": {
+        "fast_learner": {
+          "mean_mastery_gain": -0.039,
+          "std_mastery_gain": 0.0074,
+          "mean_reward": 10.3409,
+          "mean_accuracy": 0.84
+        },
+        "typical_learner": {
+          "mean_mastery_gain": -0.061,
+          "std_mastery_gain": 0.0073,
+          "mean_reward": 13.6593,
+          "mean_accuracy": 0.704
+        },
+        "struggling_learner": {
+          "mean_mastery_gain": -0.0401,
+          "std_mastery_gain": 0.0058,
+          "mean_reward": 10.9141,
+          "mean_accuracy": 0.528
+        },
+        "inconsistent_learner": {
+          "mean_mastery_gain": -0.0946,
+          "std_mastery_gain": 0.011,
+          "mean_reward": 12.3763,
+          "mean_accuracy": 0.576
+        }
+      },
+      "episodes": [
+        {
+          "seed": 101,
+          "archetype": "fast_learner",
+          "steps": 25,
+          "total_reward": 7.6439,
+          "accuracy": 0.96,
+          "invalid_actions": 0,
+          "init_hidden_mastery": 0.3328,
+          "final_hidden_mastery": 0.2892,
+          "ground_truth_mastery_gain": -0.0435,
+          "mean_bkt_mae": 0.0614
+        },
+        {
+          "seed": 202,
+          "archetype": "fast_learner",
+          "steps": 25,
+          "total_reward": 14.4247,
+          "accuracy": 0.76,
+          "invalid_actions": 0,
+          "init_hidden_mastery": 0.3447,
+          "final_hidden_mastery": 0.3099,
+          "ground_truth_mastery_gain": -0.0349,
+          "mean_bkt_mae": 0.0921
+        },
+        {
+          "seed": 303,
+          "archetype": "fast_learner",
+          "steps": 25,
+          "total_reward": 7.9258,
+          "accuracy": 0.92,
+          "invalid_actions": 0,
+          "init_hidden_mastery": 0.3585,
+          "final_hidden_mastery": 0.3076,
+          "ground_truth_mastery_gain": -0.0509,
+          "mean_bkt_mae": 0.0579
+        },
+        {
+          "seed": 404,
+          "archetype": "fast_learner",
+          "steps": 25,
+          "total_reward": 9.4053,
+          "accuracy": 0.76,
+          "invalid_actions": 0,
+          "init_hidden_mastery": 0.3186,
+          "final_hidden_mastery": 0.2825,
+          "ground_truth_mastery_gain": -0.0361,
+          "mean_bkt_mae": 0.1377
+        },
+        {
+          "seed": 505,
+          "archetype": "fast_learner",
+          "steps": 25,
+          "total_reward": 12.3047,
+          "accuracy": 0.8,
+          "invalid_actions": 0,
+          "init_hidden_mastery": 0.319,
+          "final_hidden_mastery": 0.2892,
+          "ground_truth_mastery_gain": -0.0298,
+          "mean_bkt_mae": 0.0871
+        },
+        {
+          "seed": 101,
+          "archetype": "typical_learner",
+          "steps": 25,
+          "total_reward": 13.2226,
+          "accuracy": 0.84,
+          "invalid_actions": 0,
+          "init_hidden_mastery": 0.209,
+          "final_hidden_mastery": 0.1469,
+          "ground_truth_mastery_gain": -0.0621,
+          "mean_bkt_mae": 0.1915
+        },
+        {
+          "seed": 202,
+          "archetype": "typical_learner",
+          "steps": 25,
+          "total_reward": 16.4375,
+          "accuracy": 0.68,
+          "invalid_actions": 0,
+          "init_hidden_mastery": 0.2176,
+          "final_hidden_mastery": 0.1546,
+          "ground_truth_mastery_gain": -0.063,
+          "mean_bkt_mae": 0.2088
+        },
+        {
+          "seed": 303,
+          "archetype": "typical_learner",
+          "steps": 25,
+          "total_reward": 11.7427,
+          "accuracy": 0.72,
+          "invalid_actions": 0,
+          "init_hidden_mastery": 0.2265,
+          "final_hidden_mastery": 0.1535,
+          "ground_truth_mastery_gain": -0.073,
+          "mean_bkt_mae": 0.1918
+        },
+        {
+          "seed": 404,
+          "archetype": "typical_learner",
+          "steps": 25,
+          "total_reward": 11.0362,
+          "accuracy": 0.6,
+          "invalid_actions": 0,
+          "init_hidden_mastery": 0.1989,
+          "final_hidden_mastery": 0.1432,
+          "ground_truth_mastery_gain": -0.0557,
+          "mean_bkt_mae": 0.2263
+        },
+        {
+          "seed": 505,
+          "archetype": "typical_learner",
+          "steps": 25,
+          "total_reward": 15.8577,
+          "accuracy": 0.68,
+          "invalid_actions": 0,
+          "init_hidden_mastery": 0.1963,
+          "final_hidden_mastery": 0.1448,
+          "ground_truth_mastery_gain": -0.0514,
+          "mean_bkt_mae": 0.2321
+        },
+        {
+          "seed": 101,
+          "archetype": "struggling_learner",
+          "steps": 25,
+          "total_reward": 9.2057,
+          "accuracy": 0.68,
+          "invalid_actions": 0,
+          "init_hidden_mastery": 0.1233,
+          "final_hidden_mastery": 0.0815,
+          "ground_truth_mastery_gain": -0.0418,
+          "mean_bkt_mae": 0.4255
+        },
+        {
+          "seed": 202,
+          "archetype": "struggling_learner",
+          "steps": 25,
+          "total_reward": 11.7522,
+          "accuracy": 0.48,
+          "invalid_actions": 0,
+          "init_hidden_mastery": 0.1233,
+          "final_hidden_mastery": 0.0809,
+          "ground_truth_mastery_gain": -0.0424,
+          "mean_bkt_mae": 0.348
+        },
+        {
+          "seed": 303,
+          "archetype": "struggling_learner",
+          "steps": 25,
+          "total_reward": 12.0982,
+          "accuracy": 0.44,
+          "invalid_actions": 0,
+          "init_hidden_mastery": 0.1304,
+          "final_hidden_mastery": 0.0816,
+          "ground_truth_mastery_gain": -0.0489,
+          "mean_bkt_mae": 0.2685
+        },
+        {
+          "seed": 404,
+          "archetype": "struggling_learner",
+          "steps": 25,
+          "total_reward": 2.0035,
+          "accuracy": 0.48,
+          "invalid_actions": 0,
+          "init_hidden_mastery": 0.1133,
+          "final_hidden_mastery": 0.0784,
+          "ground_truth_mastery_gain": -0.0349,
+          "mean_bkt_mae": 0.3829
+        },
+        {
+          "seed": 505,
+          "archetype": "struggling_learner",
+          "steps": 25,
+          "total_reward": 19.511,
+          "accuracy": 0.56,
+          "invalid_actions": 0,
+          "init_hidden_mastery": 0.1122,
+          "final_hidden_mastery": 0.0795,
+          "ground_truth_mastery_gain": -0.0327,
+          "mean_bkt_mae": 0.323
+        },
+        {
+          "seed": 101,
+          "archetype": "inconsistent_learner",
+          "steps": 25,
+          "total_reward": 9.6134,
+          "accuracy": 0.72,
+          "invalid_actions": 0,
+          "init_hidden_mastery": 0.2347,
+          "final_hidden_mastery": 0.1371,
+          "ground_truth_mastery_gain": -0.0976,
+          "mean_bkt_mae": 0.2522
+        },
+        {
+          "seed": 202,
+          "archetype": "inconsistent_learner",
+          "steps": 25,
+          "total_reward": 14.1681,
+          "accuracy": 0.48,
+          "invalid_actions": 0,
+          "init_hidden_mastery": 0.2408,
+          "final_hidden_mastery": 0.1422,
+          "ground_truth_mastery_gain": -0.0986,
+          "mean_bkt_mae": 0.2056
+        },
+        {
+          "seed": 303,
+          "archetype": "inconsistent_learner",
+          "steps": 25,
+          "total_reward": 10.5907,
+          "accuracy": 0.52,
+          "invalid_actions": 0,
+          "init_hidden_mastery": 0.2539,
+          "final_hidden_mastery": 0.1423,
+          "ground_truth_mastery_gain": -0.1115,
+          "mean_bkt_mae": 0.2325
+        },
+        {
+          "seed": 404,
+          "archetype": "inconsistent_learner",
+          "steps": 25,
+          "total_reward": 8.749,
+          "accuracy": 0.56,
+          "invalid_actions": 0,
+          "init_hidden_mastery": 0.2176,
+          "final_hidden_mastery": 0.1324,
+          "ground_truth_mastery_gain": -0.0851,
+          "mean_bkt_mae": 0.2708
+        },
+        {
+          "seed": 505,
+          "archetype": "inconsistent_learner",
+          "steps": 25,
+          "total_reward": 18.7603,
+          "accuracy": 0.6,
+          "invalid_actions": 0,
+          "init_hidden_mastery": 0.2138,
+          "final_hidden_mastery": 0.1334,
+          "ground_truth_mastery_gain": -0.0803,
+          "mean_bkt_mae": 0.2516
+        }
+      ]
+    },
+    "prereq_aware_weakest": {
+      "summary": {
+        "mean_ground_truth_mastery_gain": -0.0245,
+        "std_ground_truth_mastery_gain": 0.0416,
+        "mean_cumulative_reward": 31.4818,
+        "std_cumulative_reward": 10.8356,
+        "mean_accuracy": 0.502,
+        "total_invalid_actions": 0,
+        "mean_bkt_mae_vs_truth": 0.1796
+      },
+      "by_archetype": {
+        "fast_learner": {
+          "mean_mastery_gain": 0.0399,
+          "std_mastery_gain": 0.0078,
+          "mean_reward": 47.3413,
+          "mean_accuracy": 0.584
+        },
+        "typical_learner": {
+          "mean_mastery_gain": -0.0309,
+          "std_mastery_gain": 0.0071,
+          "mean_reward": 32.0684,
+          "mean_accuracy": 0.496
+        },
+        "struggling_learner": {
+          "mean_mastery_gain": -0.0336,
+          "std_mastery_gain": 0.0053,
+          "mean_reward": 18.4404,
+          "mean_accuracy": 0.44
+        },
+        "inconsistent_learner": {
+          "mean_mastery_gain": -0.0733,
+          "std_mastery_gain": 0.0106,
+          "mean_reward": 28.0772,
+          "mean_accuracy": 0.488
+        }
+      },
+      "episodes": [
+        {
+          "seed": 101,
+          "archetype": "fast_learner",
+          "steps": 25,
+          "total_reward": 50.8832,
+          "accuracy": 0.68,
+          "invalid_actions": 0,
+          "init_hidden_mastery": 0.3328,
+          "final_hidden_mastery": 0.3815,
+          "ground_truth_mastery_gain": 0.0487,
+          "mean_bkt_mae": 0.1133
+        },
+        {
+          "seed": 202,
+          "archetype": "fast_learner",
+          "steps": 25,
+          "total_reward": 47.6232,
+          "accuracy": 0.56,
+          "invalid_actions": 0,
+          "init_hidden_mastery": 0.3447,
+          "final_hidden_mastery": 0.378,
+          "ground_truth_mastery_gain": 0.0332,
+          "mean_bkt_mae": 0.1583
+        },
+        {
+          "seed": 303,
+          "archetype": "fast_learner",
+          "steps": 25,
+          "total_reward": 43.8523,
+          "accuracy": 0.56,
+          "invalid_actions": 0,
+          "init_hidden_mastery": 0.3585,
+          "final_hidden_mastery": 0.3874,
+          "ground_truth_mastery_gain": 0.0289,
+          "mean_bkt_mae": 0.1765
+        },
+        {
+          "seed": 404,
+          "archetype": "fast_learner",
+          "steps": 25,
+          "total_reward": 46.8015,
+          "accuracy": 0.6,
+          "invalid_actions": 0,
+          "init_hidden_mastery": 0.3186,
+          "final_hidden_mastery": 0.3659,
+          "ground_truth_mastery_gain": 0.0473,
+          "mean_bkt_mae": 0.1699
+        },
+        {
+          "seed": 505,
+          "archetype": "fast_learner",
+          "steps": 25,
+          "total_reward": 47.5462,
+          "accuracy": 0.52,
+          "invalid_actions": 0,
+          "init_hidden_mastery": 0.319,
+          "final_hidden_mastery": 0.3606,
+          "ground_truth_mastery_gain": 0.0416,
+          "mean_bkt_mae": 0.1742
+        },
+        {
+          "seed": 101,
+          "archetype": "typical_learner",
+          "steps": 25,
+          "total_reward": 33.2136,
+          "accuracy": 0.56,
+          "invalid_actions": 0,
+          "init_hidden_mastery": 0.209,
+          "final_hidden_mastery": 0.1816,
+          "ground_truth_mastery_gain": -0.0274,
+          "mean_bkt_mae": 0.1951
+        },
+        {
+          "seed": 202,
+          "archetype": "typical_learner",
+          "steps": 25,
+          "total_reward": 31.4968,
+          "accuracy": 0.48,
+          "invalid_actions": 0,
+          "init_hidden_mastery": 0.2176,
+          "final_hidden_mastery": 0.1799,
+          "ground_truth_mastery_gain": -0.0377,
+          "mean_bkt_mae": 0.1741
+        },
+        {
+          "seed": 303,
+          "archetype": "typical_learner",
+          "steps": 25,
+          "total_reward": 30.8105,
+          "accuracy": 0.48,
+          "invalid_actions": 0,
+          "init_hidden_mastery": 0.2265,
+          "final_hidden_mastery": 0.1854,
+          "ground_truth_mastery_gain": -0.0411,
+          "mean_bkt_mae": 0.1696
+        },
+        {
+          "seed": 404,
+          "archetype": "typical_learner",
+          "steps": 25,
+          "total_reward": 29.2582,
+          "accuracy": 0.48,
+          "invalid_actions": 0,
+          "init_hidden_mastery": 0.1989,
+          "final_hidden_mastery": 0.1745,
+          "ground_truth_mastery_gain": -0.0244,
+          "mean_bkt_mae": 0.1659
+        },
+        {
+          "seed": 505,
+          "archetype": "typical_learner",
+          "steps": 25,
+          "total_reward": 35.5628,
+          "accuracy": 0.48,
+          "invalid_actions": 0,
+          "init_hidden_mastery": 0.1963,
+          "final_hidden_mastery": 0.1723,
+          "ground_truth_mastery_gain": -0.0239,
+          "mean_bkt_mae": 0.1641
+        },
+        {
+          "seed": 101,
+          "archetype": "struggling_learner",
+          "steps": 25,
+          "total_reward": 22.9243,
+          "accuracy": 0.56,
+          "invalid_actions": 0,
+          "init_hidden_mastery": 0.1233,
+          "final_hidden_mastery": 0.0899,
+          "ground_truth_mastery_gain": -0.0334,
+          "mean_bkt_mae": 0.2466
+        },
+        {
+          "seed": 202,
+          "archetype": "struggling_learner",
+          "steps": 25,
+          "total_reward": 16.4462,
+          "accuracy": 0.4,
+          "invalid_actions": 0,
+          "init_hidden_mastery": 0.1233,
+          "final_hidden_mastery": 0.086,
+          "ground_truth_mastery_gain": -0.0373,
+          "mean_bkt_mae": 0.1841
+        },
+        {
+          "seed": 303,
+          "archetype": "struggling_learner",
+          "steps": 25,
+          "total_reward": 18.5057,
+          "accuracy": 0.4,
+          "invalid_actions": 0,
+          "init_hidden_mastery": 0.1304,
+          "final_hidden_mastery": 0.0889,
+          "ground_truth_mastery_gain": -0.0416,
+          "mean_bkt_mae": 0.1887
+        },
+        {
+          "seed": 404,
+          "archetype": "struggling_learner",
+          "steps": 25,
+          "total_reward": 14.3664,
+          "accuracy": 0.44,
+          "invalid_actions": 0,
+          "init_hidden_mastery": 0.1133,
+          "final_hidden_mastery": 0.0853,
+          "ground_truth_mastery_gain": -0.028,
+          "mean_bkt_mae": 0.2048
+        },
+        {
+          "seed": 505,
+          "archetype": "struggling_learner",
+          "steps": 25,
+          "total_reward": 19.9593,
+          "accuracy": 0.4,
+          "invalid_actions": 0,
+          "init_hidden_mastery": 0.1122,
+          "final_hidden_mastery": 0.0843,
+          "ground_truth_mastery_gain": -0.0278,
+          "mean_bkt_mae": 0.1783
+        },
+        {
+          "seed": 101,
+          "archetype": "inconsistent_learner",
+          "steps": 25,
+          "total_reward": 32.3673,
+          "accuracy": 0.64,
+          "invalid_actions": 0,
+          "init_hidden_mastery": 0.2347,
+          "final_hidden_mastery": 0.1651,
+          "ground_truth_mastery_gain": -0.0695,
+          "mean_bkt_mae": 0.2337
+        },
+        {
+          "seed": 202,
+          "archetype": "inconsistent_learner",
+          "steps": 25,
+          "total_reward": 28.531,
+          "accuracy": 0.48,
+          "invalid_actions": 0,
+          "init_hidden_mastery": 0.2408,
+          "final_hidden_mastery": 0.1596,
+          "ground_truth_mastery_gain": -0.0813,
+          "mean_bkt_mae": 0.1806
+        },
+        {
+          "seed": 303,
+          "archetype": "inconsistent_learner",
+          "steps": 25,
+          "total_reward": 24.7327,
+          "accuracy": 0.4,
+          "invalid_actions": 0,
+          "init_hidden_mastery": 0.2539,
+          "final_hidden_mastery": 0.1642,
+          "ground_truth_mastery_gain": -0.0897,
+          "mean_bkt_mae": 0.1676
+        },
+        {
+          "seed": 404,
+          "archetype": "inconsistent_learner",
+          "steps": 25,
+          "total_reward": 21.9784,
+          "accuracy": 0.44,
+          "invalid_actions": 0,
+          "init_hidden_mastery": 0.2176,
+          "final_hidden_mastery": 0.1532,
+          "ground_truth_mastery_gain": -0.0644,
+          "mean_bkt_mae": 0.1726
+        },
+        {
+          "seed": 505,
+          "archetype": "inconsistent_learner",
+          "steps": 25,
+          "total_reward": 32.7767,
+          "accuracy": 0.48,
+          "invalid_actions": 0,
+          "init_hidden_mastery": 0.2138,
+          "final_hidden_mastery": 0.1521,
+          "ground_truth_mastery_gain": -0.0616,
+          "mean_bkt_mae": 0.1742
+        }
+      ]
+    }
+  }
+}

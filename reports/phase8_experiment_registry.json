@@ -1,0 +1,86 @@
+{
+  "registry_name": "AutoLearn KT-RL Human Pilot Experiment Registry",
+  "project_title": "Knowledge-Tracing-Guided Reinforcement Learning for Personalized Exercise Selection",
+  "protocol_version": "1.0",
+  "lead_researchers": [
+    { "name": "T. Sanjay", "id": "E0124009", "role": "Co-Principal Investigator" },
+    { "name": "M. Nithish Kumar", "id": "E0124027", "role": "Co-Principal Investigator" }
+  ],
+  "study_design": {
+    "type": "Randomized Controlled Trial (RCT) with Parallel Arms",
+    "blinding": "Double-blind (participants and teaching assistants blinded to policy allocation)",
+    "allocation_ratio": "1:1:1:1",
+    "curriculum_domain": "Introductory Python & Algorithm Design (52 items, 30 KCs)"
+  },
+  "study_arms": [
+    {
+      "arm_id": "ARM-0-CONTROL",
+      "name": "Prerequisite Difficulty Ladder (Standard Baseline)",
+      "policy_key": "difficulty_ladder",
+      "description": "Standard sequential curriculum progressing from lower to higher difficulty upon prerequisite satisfaction",
+      "safety_classification": "Standard Educational Practice"
+    },
+    {
+      "arm_id": "ARM-1-COMPOSITE",
+      "name": "Composite Adaptive Policy (Rule-Based KT)",
+      "policy_key": "composite_adaptive",
+      "description": "Combines BKT mastery, spacing decay, entropy uncertainty, and difficulty recovery hysteretic state machine",
+      "safety_classification": "Enhanced Educational Practice"
+    },
+    {
+      "arm_id": "ARM-2-DQN",
+      "name": "Dueling Double DQN Policy (Deep RL)",
+      "policy_key": "dueling_dqn",
+      "description": "99-dimensional state space policy selecting exercises to maximize cumulative multi-objective pedagogical reward",
+      "safety_classification": "Experimental Adaptive Agent (Shadow / Controlled Pilot)"
+    },
+    {
+      "arm_id": "ARM-3-BANDIT",
+      "name": "LinUCB Contextual Bandit Policy",
+      "policy_key": "linucb_bandit",
+      "description": "Upper Confidence Bound contextual linear regression balancing exploration and exploitation over feature vectors",
+      "safety_classification": "Experimental Adaptive Agent (Shadow / Controlled Pilot)"
+    }
+  ],
+  "statistical_power_analysis": {
+    "target_effect_size_cohens_d": 0.70,
+    "significance_level_alpha": 0.05,
+    "statistical_power_1_minus_beta": 0.80,
+    "test_type": "Two-tailed independent two-sample t-test",
+    "required_sample_size_per_arm": 33,
+    "total_target_sample_size": 132,
+    "attrition_buffer_percent": 15,
+    "planned_enrollment": 152
+  },
+  "hypotheses": [
+    {
+      "hypothesis_id": "H1",
+      "statement": "Learners allocated to KT-guided adaptive policies (Arms 1, 2, 3) will achieve significantly higher normalized learning gains (Hake's g) on post-assessment compared to control (Arm 0)."
+    },
+    {
+      "hypothesis_id": "H2",
+      "statement": "Dueling Double DQN (Arm 2) will demonstrate superior exercise efficiency (mastery gain per exercise attempt) compared to rule-based baselines."
+    },
+    {
+      "hypothesis_id": "H3",
+      "statement": "The Hysteretic Difficulty Recovery mechanism embedded in Composite Adaptive (Arm 1) will significantly lower learner frustration rates (episodes with >=3 consecutive failures) to below 5%."
+    }
+  ],
+  "endpoints": {
+    "primary_endpoint": {
+      "metric": "Normalized Learning Gain (g_norm)",
+      "measurement_instrument": "Identical/Parallel 10-item pre- and post-assessments"
+    },
+    "secondary_endpoints": [
+      { "metric": "7-Day Delayed Retention Rate (R_retention)", "measurement_instrument": "Delayed 10-item retention assessment" },
+      { "metric": "Time-to-Mastery Efficiency (Gain / Minutes)", "measurement_instrument": "Platform interaction logs" },
+      { "metric": "Frustration Trigger Frequency", "measurement_instrument": "Consecutive incorrect attempt counters" },
+      { "metric": "Subjective Learner Self-Efficacy & Flow", "measurement_instrument": "Validated 5-point Likert questionnaire" }
+    ]
+  },
+  "stopping_rules_and_safety": {
+    "frustration_cutoff": 0.25,
+    "attrition_cutoff": 0.30,
+    "adverse_pedagogical_clause": "If any experimental arm demonstrates statistically significant negative learning gains compared to baseline at interim analysis (N=15 per arm), that arm will be immediately halted."
+  }
+}

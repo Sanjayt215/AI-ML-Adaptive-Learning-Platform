@@ -123,8 +123,21 @@ def retrieve_relevant_chunks(question: str, selected_topics: List[str], limit: i
     return chunks
 
 
+def _is_generic_ai_question(question: str) -> bool:
+    q = question.lower()
+    generic_terms = [
+        'what is ai', 'what is artificial intelligence', 'define ai', 'what does ai mean',
+        'artificial intelligence', 'ai meaning', 'ai vs ml', 'difference between ai and',
+        'explain ai', 'ai and ml', 'what is ai?', 'what does ai'
+    ]
+    return any(term in q for term in generic_terms)
+
+
 def _detect_topic(question: str, selected_topics: List[str]) -> str:
     q = question.lower()
+    if _is_generic_ai_question(question):
+        return 'llm' if 'llm' in TOPIC_CATALOG else (selected_topics[0] if selected_topics else 'python')
+
     for topic in selected_topics:
         keys = [topic] + TOPIC_CATALOG.get(topic, {}).get('aliases', [])
         if any(k.lower() in q for k in keys):
@@ -184,6 +197,11 @@ def _local_reasoned_answer(question: str, detected_topic: str, profile: Dict, as
     if compare:
         return compare
 
+    if _is_generic_ai_question(question):
+        return textwrap.fill(
+            "Artificial intelligence (AI) refers to systems that can perform tasks normally requiring human intelligence, such as learning, reasoning, perception, and language understanding. In this platform, AI learning paths include LLMs, NLP, prompt engineering, and deployment. Start with LLM fundamentals and NLP for language understanding, then move into model deployment once you have a working model to serve.",
+            width=120,
+        )
     if any(k in q for k in ['doubt', 'clarify', 'explain', 'understand', 'what is', 'how does']):
         return textwrap.fill(
             f"{detected_topic.title()} explanation: {topic_note} Start from prerequisites like {', '.join(prerequisites) if prerequisites else 'Python and basic math'}, then study one concept at a time, solve 2 or 3 examples, and apply it in a mini project. For your current level ({current_level}) and score ({current_score}%), begin with '{videos[0]['title']}' and then try this project: {proj}",

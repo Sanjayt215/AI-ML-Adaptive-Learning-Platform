@@ -1,0 +1,141 @@
+{
+  "project": "Knowledge-Tracing-Guided Reinforcement Learning for Personalized Exercise Selection",
+  "application": "AutoLearn AI Adaptive Learning Platform",
+  "audit_date": "2026-10-19",
+  "research_team": [
+    "T. Sanjay (E0124009)",
+    "M. Nithish Kumar (E0124027)"
+  ],
+  "features": [
+    {
+      "feature_id": "C1_QUESTION_METADATA",
+      "name": "Question and Knowledge Component Metadata",
+      "expected_behavior": "Canonical 52-question bank with stable item_ids, 30 canonical KCs, 1-5 difficulty ratings, and prerequisite DAG.",
+      "source_files": ["autolearn_fullstack/resources.py"],
+      "test_coverage": ["autolearn_fullstack/tests/test_question_metadata.py"],
+      "integration_status": "Fully integrated into static resources, quiz generator, and RL environment.",
+      "status": "VERIFIED",
+      "evidence": "6 unit tests pass validating 52 stable items, 30 KCs, and 0 prerequisite cycles."
+    },
+    {
+      "feature_id": "C2_LEARNER_EVENTS_STORE",
+      "name": "Persistent SQLite Learning Event Store",
+      "expected_behavior": "Transactional persistence of learner interaction events, session tracking, response times, and state snapshots.",
+      "source_files": ["autolearn_fullstack/services/learning_store.py"],
+      "test_coverage": ["autolearn_fullstack/tests/test_learning_store.py", "autolearn_fullstack/tests/test_learning_api.py"],
+      "integration_status": "Active database with tables learning_events, learning_sessions, and learner_states.",
+      "status": "VERIFIED",
+      "evidence": "5 unit tests pass confirming foreign-key enforcement, idempotent insertion, and deterministic retrieval."
+    },
+    {
+      "feature_id": "C3_BKT_ENGINE",
+      "name": "Bayesian Knowledge Tracing (BKT) Engine",
+      "expected_behavior": "Sequential Bayesian mastery updates P(K) after each answer, chronological history replay, and per-KC belief tracking.",
+      "source_files": ["autolearn_fullstack/services/bkt_service.py"],
+      "test_coverage": ["autolearn_fullstack/tests/test_bkt_service.py"],
+      "integration_status": "Exposed via /api/learning/mastery endpoints and visualized in the React Dashboard Knowledge Tracing tab.",
+      "status": "VERIFIED",
+      "evidence": "9 unit tests pass verifying Bayesian update math, prior bounds, and multi-KC independent updates."
+    },
+    {
+      "feature_id": "E1_LEARNER_SIMULATOR",
+      "name": "Synthetic Student Simulator",
+      "expected_behavior": "Simulates 4 student archetypes (fast, typical, struggling, inconsistent) with sigmoid response models, learning, and forgetting.",
+      "source_files": ["autolearn_fullstack/services/learner_simulator.py"],
+      "test_coverage": ["autolearn_fullstack/tests/test_rl_env.py"],
+      "integration_status": "Encapsulated in ExerciseSelectionEnv; strictly isolated from observable policy state.",
+      "status": "VERIFIED",
+      "evidence": "14 tests pass confirming fixed-seed reproducibility, response probabilities, and ground-truth encapsulation."
+    },
+    {
+      "feature_id": "E2_RL_ENVIRONMENT",
+      "name": "Gymnasium-Compatible RL Environment & State Encoder",
+      "expected_behavior": "99-dim observable state, Discrete(52) action space, prerequisite action masking, and multi-objective reward function.",
+      "source_files": ["autolearn_fullstack/services/rl_env.py", "autolearn_fullstack/services/rl_state_encoder.py", "autolearn_fullstack/services/rl_reward.py"],
+      "test_coverage": ["autolearn_fullstack/tests/test_rl_env.py"],
+      "integration_status": "Full 5-tuple step interface used by training pipelines and baseline diagnostics.",
+      "status": "VERIFIED",
+      "evidence": "Environment reset and step contracts verified with 0 prerequisite violations under action masking."
+    },
+    {
+      "feature_id": "E3_DUELING_DQN",
+      "name": "Dueling Deep Q-Network Agent & Training Pipeline",
+      "expected_behavior": "Dueling architecture V(s) and A(s, a), Double DQN target bootstrapping, action-masked exploration/exploitation, and replay memory.",
+      "source_files": ["autolearn_fullstack/services/dqn_agent.py", "autolearn_fullstack/services/train_dqn.py"],
+      "test_coverage": ["autolearn_fullstack/tests/test_dqn.py"],
+      "integration_status": "Trained checkpoint saved at models/dqn/dueling_dqn_final.pt.",
+      "status": "VERIFIED",
+      "evidence": "6 unit tests pass validating dueling mathematical aggregation, Double DQN targets, and checkpoint roundtrips."
+    },
+    {
+      "feature_id": "E4_EVALUATION_AND_ABLATIONS",
+      "name": "Comprehensive Evaluation & Ablation Studies",
+      "expected_behavior": "Held-out evaluation comparing Dueling DQN against 4 baselines, and ablation of Double DQN, rewards, and action masks.",
+      "source_files": ["autolearn_fullstack/services/evaluate_dqn.py", "autolearn_fullstack/services/run_ablations.py"],
+      "test_coverage": ["autolearn_fullstack/tests/test_phase5.py"],
+      "integration_status": "Machine-readable reports generated in reports/phase5_evaluation.json and phase5_ablation_results.json.",
+      "status": "VERIFIED",
+      "evidence": "100-episode held-out evaluation confirms Dueling DQN does not outperform prereq_aware_weakest heuristic."
+    },
+    {
+      "feature_id": "F1_EXPERIMENTAL_API",
+      "name": "Experimental Recommendation Endpoint & Safety Gatekeeper",
+      "expected_behavior": "Opt-in endpoint POST /api/experimental/recommendation gated by KT_RL_EXPERIMENT_ENABLED (default disabled) with heuristic fallback.",
+      "source_files": ["autolearn_fullstack/app.py", "autolearn_fullstack/services/experimental_recommendation_service.py"],
+      "test_coverage": ["autolearn_fullstack/tests/test_phase5.py"],
+      "integration_status": "Route registered in app.py with safety fallback to baseline.",
+      "status": "VERIFIED",
+      "evidence": "Unit tests pass verifying flag defaulting to disabled and graceful fallback on missing checkpoints."
+    },
+    {
+      "feature_id": "D1_FORGETTING_AWARE_REC",
+      "name": "Forgetting-Aware Exercise Selection",
+      "expected_behavior": "Estimates retention decay based on elapsed time since last practice and prioritizes revision for previously mastered topics.",
+      "source_files": ["autolearn_fullstack/services/adaptive_recommender.py"],
+      "test_coverage": [],
+      "integration_status": "Not yet integrated into a unified adaptive recommendation service.",
+      "status": "PARTIAL",
+      "evidence": "Simulator implements forgetting, but observable live recommender lacks longitudinal retention modeling."
+    },
+    {
+      "feature_id": "D2_CONFIDENCE_AWARE_REC",
+      "name": "Confidence- & Uncertainty-Aware Selection",
+      "expected_behavior": "Distinguishes between high/low mastery and high/low evidence; prioritizes informative assessment for high-uncertainty KCs.",
+      "source_files": ["autolearn_fullstack/services/adaptive_recommender.py"],
+      "test_coverage": [],
+      "integration_status": "Evidence quality badges exist on BKT states, but policy doesn't use it to balance exploration vs exploitation.",
+      "status": "PARTIAL",
+      "evidence": "Evidence quality is logged, but recommendation policies currently only inspect mean mastery probability."
+    },
+    {
+      "feature_id": "D3_FRUSTRATION_AWARE_REC",
+      "name": "Frustration-Aware & Disengagement Risk Mitigation",
+      "expected_behavior": "Detects consecutive topic failures and prolonged response times, automatically adjusting difficulty and providing remedial practice.",
+      "source_files": ["autolearn_fullstack/services/adaptive_recommender.py"],
+      "test_coverage": [],
+      "integration_status": "Present in RL reward penalty; missing from live rule-based recommendation logic.",
+      "status": "PARTIAL",
+      "evidence": "Reward penalizes consecutive failures in simulation, but live recommender does not adaptively back off."
+    },
+    {
+      "feature_id": "D5_UNIFIED_RECOMMENDER",
+      "name": "Unified Adaptive Recommendation Service",
+      "expected_behavior": "Single modular service coordinating BKT, forgetting, confidence, frustration, and prerequisite policies with structured explanations.",
+      "source_files": ["autolearn_fullstack/services/adaptive_recommender.py"],
+      "test_coverage": [],
+      "integration_status": "Currently fragmented between rl_diagnostics, experimental_recommendation_service, and catalog_service.",
+      "status": "MISSING",
+      "evidence": "To be implemented in Phase D."
+    },
+    {
+      "feature_id": "D6_FRONTEND_INTEGRATION",
+      "name": "Frontend Real-Time Adaptive Recommendation Card",
+      "expected_behavior": "Displays recommended next exercise, pedagogical rationale, mastery status, and evidence quality in dashboard and quiz pages.",
+      "source_files": ["autolearn_fullstack/frontend/src/pages/DashboardPage.jsx", "autolearn_fullstack/frontend/src/pages/QuizPage.jsx"],
+      "test_coverage": [],
+      "integration_status": "Dashboard displays BKT state, but live adaptive recommendation card is not yet rendered.",
+      "status": "PARTIAL",
+      "evidence": "UI needs an interactive adaptive recommendation card connected to the new recommendation endpoint."
+    }
+  ]
+}

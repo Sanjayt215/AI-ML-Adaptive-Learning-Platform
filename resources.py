@@ -235,50 +235,22 @@ TOPIC_CATALOG = {
     },
 }
 
-QUIZ_QUESTIONS = {
-    "python": [
-        {"q": "Which library is mainly used for numerical arrays in Python?", "options": ["NumPy", "Flask", "OpenCV", "NLTK"], "answer": "NumPy"},
-        {"q": "Which data structure stores key-value pairs?", "options": ["list", "tuple", "dictionary", "set"], "answer": "dictionary"},
-    ],
-    "data preprocessing": [
-        {"q": "What is the main purpose of feature scaling?", "options": ["Increase rows", "Reduce model bias due to scale", "Delete outliers", "Encode labels"], "answer": "Reduce model bias due to scale"},
-        {"q": "Handling missing values is part of?", "options": ["Deployment", "Data preprocessing", "Visualization only", "Testing only"], "answer": "Data preprocessing"},
-    ],
-    "linear regression": [
-        {"q": "Linear regression is mainly used for?", "options": ["Clustering", "Regression", "Association rules", "Image segmentation"], "answer": "Regression"},
-        {"q": "Ridge and Lasso are mainly used for?", "options": ["Data collection", "Regularization", "Label encoding", "Dendrograms"], "answer": "Regularization"},
-    ],
-    "classification": [
-        {"q": "Logistic Regression is mainly used for?", "options": ["Continuous prediction", "Classification", "Clustering", "Dimensionality reduction"], "answer": "Classification"},
-        {"q": "KNN predicts using?", "options": ["Nearest neighbors", "Gradient descent only", "Random guessing", "SQL queries"], "answer": "Nearest neighbors"},
-    ],
-    "decision trees": [
-        {"q": "Decision trees are popular because they are?", "options": ["Interpretable", "Always fastest", "Unsupervised", "Only for images"], "answer": "Interpretable"},
-        {"q": "Pruning is used to?", "options": ["Increase overfitting", "Reduce overfitting", "Create more features", "Shuffle data"], "answer": "Reduce overfitting"},
-    ],
-    "clustering": [
-        {"q": "K-Means is an example of?", "options": ["Supervised learning", "Unsupervised learning", "Reinforcement learning", "Rule-based AI"], "answer": "Unsupervised learning"},
-        {"q": "A dendrogram is commonly used in?", "options": ["Linear regression", "Agglomerative clustering", "Naive Bayes", "KNN"], "answer": "Agglomerative clustering"},
-    ],
-    "dimensionality reduction": [
-        {"q": "PCA is mainly used to?", "options": ["Increase dimensions", "Reduce dimensions", "Generate labels", "Create rules"], "answer": "Reduce dimensions"},
-        {"q": "LDA is useful for?", "options": ["Supervised dimensionality reduction", "Random forests", "Hyperparameter tuning", "Clustering only"], "answer": "Supervised dimensionality reduction"},
-    ],
-    "naive bayes": [
-        {"q": "Naive Bayes is based on?", "options": ["Conditional probability", "Backpropagation", "Path planning", "Sorting"], "answer": "Conditional probability"},
-        {"q": "Bayesian networks are useful for?", "options": ["Reasoning under uncertainty", "Video editing", "Path compression", "Clustering"], "answer": "Reasoning under uncertainty"},
-    ],
-    "neural networks": [
-        {"q": "An activation function is used to add?", "options": ["Noise", "Non-linearity", "Rows", "Classes"], "answer": "Non-linearity"},
-        {"q": "Which is a common optimizer?", "options": ["Adam", "Merge Sort", "KNN", "One-hot"], "answer": "Adam"},
-    ],
-    "automl": [
-        {"q": "AutoML mainly helps with?", "options": ["Automated model selection and tuning", "Only plotting", "Only data entry", "Only web design"], "answer": "Automated model selection and tuning"},
-        {"q": "Gradient boosting combines?", "options": ["Weak learners into a strong model", "Only clusters", "Only SQL tables", "Only dictionaries"], "answer": "Weak learners into a strong model"},
-    ],
-}
 
+import copy
+try:
+    from canonical_questions_data import (
+        UPGRADED_QUIZ_QUESTIONS,
+        UPGRADED_ADDITIONAL_QUIZ_QUESTIONS,
+        UPGRADED_MORE_QUIZ,
+    )
+except ImportError:
+    from autolearn_fullstack.canonical_questions_data import (
+        UPGRADED_QUIZ_QUESTIONS,
+        UPGRADED_ADDITIONAL_QUIZ_QUESTIONS,
+        UPGRADED_MORE_QUIZ,
+    )
 
+QUIZ_QUESTIONS = copy.deepcopy(UPGRADED_QUIZ_QUESTIONS)
 ADDITIONAL_TOPICS = {
     "statistics": {
         "aliases": ["statistics", "mean median mode", "variance", "standard deviation", "descriptive statistics"],
@@ -560,60 +532,9 @@ ADDITIONAL_TOPICS = {
 
 TOPIC_CATALOG.update(ADDITIONAL_TOPICS)
 
-ADDITIONAL_QUIZ_QUESTIONS = {
-    "statistics": [
-        {"q": "Which measure shows the average value of a dataset?", "options": ["Mean", "Confusion matrix", "Entropy", "Recall"], "answer": "Mean"},
-        {"q": "Standard deviation tells you about?", "options": ["Spread of data", "Model deployment", "Label count", "Activation function"], "answer": "Spread of data"},
-    ],
-    "probability": [
-        {"q": "Probability values usually lie between?", "options": ["0 and 1", "1 and 10", "-1 and 1", "Any value"], "answer": "0 and 1"},
-        {"q": "Bayes theorem is used to update?", "options": ["Probabilities after evidence", "HTML pages", "SQL indexes", "Video duration"], "answer": "Probabilities after evidence"},
-    ],
-    "feature engineering": [
-        {"q": "One-hot encoding is mainly used for?", "options": ["Categorical variables", "Images only", "Sorting", "Neural pruning"], "answer": "Categorical variables"},
-        {"q": "Feature selection helps by?", "options": ["Removing less useful features", "Increasing labels", "Adding noise", "Changing optimizer"], "answer": "Removing less useful features"},
-    ],
-    "model evaluation": [
-        {"q": "Precision measures?", "options": ["How many predicted positives were correct", "How many rows are present", "Training time only", "Number of classes"], "answer": "How many predicted positives were correct"},
-        {"q": "Cross-validation helps estimate?", "options": ["Generalization performance", "CSS design", "File size", "Video quality"], "answer": "Generalization performance"},
-    ],
-    "computer vision": [
-        {"q": "OpenCV is commonly used for?", "options": ["Image processing", "Database joins", "Email sending", "Compiler design"], "answer": "Image processing"},
-        {"q": "CNNs are especially strong for?", "options": ["Image tasks", "Sorting arrays", "SQL backups", "PDF editing"], "answer": "Image tasks"},
-    ],
-    "nlp": [
-        {"q": "Tokenization splits text into?", "options": ["Smaller units", "Images", "Decision trees", "Gradients"], "answer": "Smaller units"},
-        {"q": "Sentiment analysis predicts?", "options": ["Opinion polarity", "Pixel values", "Audio pitch", "Learning rate"], "answer": "Opinion polarity"},
-    ],
-    "transformers": [
-        {"q": "Transformers are built around the idea of?", "options": ["Attention", "Sorting", "Backtracking", "Greedy pruning"], "answer": "Attention"},
-        {"q": "BERT is mainly known for?", "options": ["Understanding text context", "Clustering customers", "Video rendering", "OS scheduling"], "answer": "Understanding text context"},
-    ],
-    "llm": [
-        {"q": "LLM stands for?", "options": ["Large Language Model", "Low Level Memory", "Linear Logic Machine", "Local Learning Module"], "answer": "Large Language Model"},
-        {"q": "RAG improves an LLM by adding?", "options": ["External retrieved knowledge", "More CSS", "Extra pixels", "USB drivers"], "answer": "External retrieved knowledge"},
-    ],
-    "prompt engineering": [
-        {"q": "Few-shot prompting means?", "options": ["Giving examples in the prompt", "Using fewer GPUs", "Reducing file size", "Skipping training data"], "answer": "Giving examples in the prompt"},
-        {"q": "A good prompt usually improves?", "options": ["Answer quality", "Disk speed", "Battery size", "Compiler warnings"], "answer": "Answer quality"},
-    ],
-    "generative ai": [
-        {"q": "Generative AI is used to?", "options": ["Create new content", "Only sort data", "Only delete rows", "Only compress files"], "answer": "Create new content"},
-        {"q": "Foundation models are typically?", "options": ["Pretrained on large data", "Manually hard-coded", "Only for images", "Only offline apps"], "answer": "Pretrained on large data"},
-    ],
-    "reinforcement learning": [
-        {"q": "In RL, an agent learns by receiving?", "options": ["Rewards", "Only labels", "Only HTML", "Only images"], "answer": "Rewards"},
-        {"q": "Q-learning updates a table of?", "options": ["State-action values", "Video frames", "Model cards", "CSV rows"], "answer": "State-action values"},
-    ],
-    "model deployment": [
-        {"q": "Model deployment means?", "options": ["Making a model available for real use", "Deleting the model", "Only training again", "Only plotting results"], "answer": "Making a model available for real use"},
-        {"q": "An API endpoint helps users or apps to?", "options": ["Send input and get predictions", "Only write CSS", "Only rename files", "Only draw graphs"], "answer": "Send input and get predictions"},
-    ],
-}
 
+ADDITIONAL_QUIZ_QUESTIONS = copy.deepcopy(UPGRADED_ADDITIONAL_QUIZ_QUESTIONS)
 QUIZ_QUESTIONS.update(ADDITIONAL_QUIZ_QUESTIONS)
-
-
 def normalize_topic(text: str) -> str:
     lowered = text.strip().lower()
     for topic, meta in TOPIC_CATALOG.items():
@@ -697,14 +618,92 @@ MORE_TOPICS = {
     },
 }
 TOPIC_CATALOG.update(MORE_TOPICS)
-MORE_QUIZ = {
-    "svm": [{"q": "SVM mainly tries to maximize the?", "options": ["Margin between classes", "Number of labels", "Training epochs", "Database joins"], "answer": "Margin between classes"}],
-    "ensemble methods": [{"q": "Boosting mainly combines models in a?", "options": ["Sequential way", "Random file order", "Database-only way", "Static template"], "answer": "Sequential way"}],
-    "hyperparameter tuning": [{"q": "Grid search is used to?", "options": ["Try multiple hyperparameter combinations", "Resize images", "Label data manually", "Deploy APIs"], "answer": "Try multiple hyperparameter combinations"}],
-    "search algorithms": [{"q": "BFS explores nodes?", "options": ["Level by level", "Only from the end", "Randomly", "By clustering"], "answer": "Level by level"}],
-    "knowledge representation": [{"q": "Knowledge representation is mainly about?", "options": ["Storing facts and relations for reasoning", "Only plotting graphs", "Compressing images", "GPU tuning"], "answer": "Storing facts and relations for reasoning"}],
-    "expert systems": [{"q": "An expert system typically uses a?", "options": ["Knowledge base and inference engine", "Only CNN", "Only database trigger", "Compiler optimizer"], "answer": "Knowledge base and inference engine"}],
-    "fuzzy logic": [{"q": "Fuzzy logic is useful when truth is?", "options": ["Partial and gradual", "Always binary only", "Unknown forever", "Equal to zero"], "answer": "Partial and gradual"}],
-    "rag": [{"q": "RAG improves answers by adding?", "options": ["Retrieved external context", "More CSS", "More image pixels", "Faster compiler flags"], "answer": "Retrieved external context"}],
-}
+
+MORE_QUIZ = copy.deepcopy(UPGRADED_MORE_QUIZ)
 QUIZ_QUESTIONS.update(MORE_QUIZ)
+
+def get_all_questions():
+    """
+    Returns a flat list of all canonical questions across QUIZ_QUESTIONS,
+    with topic and item_id metadata populated.
+    """
+    items = []
+    seen = set()
+    for topic, qlist in QUIZ_QUESTIONS.items():
+        for q in qlist:
+            item_id = q.get("item_id")
+            if item_id and item_id not in seen:
+                seen.add(item_id)
+                enriched = dict(q)
+                enriched["topic"] = topic
+                items.append(enriched)
+    return items
+
+
+def get_question_by_id(item_id):
+    """
+    Finds a question dictionary by its stable item_id.
+    """
+    if not item_id:
+        return None
+    for topic, qlist in QUIZ_QUESTIONS.items():
+        for q in qlist:
+            if q.get("item_id") == item_id:
+                res = dict(q)
+                res["topic"] = topic
+                return res
+    return None
+
+
+def validate_item_bank():
+    """
+    Validates question bank consistency:
+    - Unique item_ids
+    - Non-empty question and options
+    - Correct answer in options
+    - Valid knowledge components
+    - Difficulty in range [1, 5]
+    Returns a dict with status and any validation errors found.
+    """
+    errors = []
+    seen_ids = set()
+    total_count = 0
+
+    for topic, qlist in QUIZ_QUESTIONS.items():
+        for i, q in enumerate(qlist):
+            total_count += 1
+            item_id = q.get("item_id")
+            if not item_id:
+                errors.append(f"Topic '{topic}', index {i}: missing item_id")
+            elif item_id in seen_ids:
+                errors.append(f"Duplicate item_id detected: '{item_id}'")
+            else:
+                seen_ids.add(item_id)
+
+            q_text = q.get("question") or q.get("q")
+            if not q_text or not isinstance(q_text, str) or not q_text.strip():
+                errors.append(f"Item '{item_id or (topic + str(i))}': missing question text")
+
+            opts = q.get("options") or []
+            if not isinstance(opts, list) or len(opts) < 2:
+                errors.append(f"Item '{item_id or (topic + str(i))}': invalid options list")
+
+            ans = q.get("correct_answer") or q.get("answer")
+            if not ans or ans not in opts:
+                errors.append(f"Item '{item_id or (topic + str(i))}': correct answer '{ans}' not in options {opts}")
+
+            diff = q.get("difficulty")
+            if diff is not None and (not isinstance(diff, (int, float)) or diff < 1 or diff > 5):
+                errors.append(f"Item '{item_id or (topic + str(i))}': difficulty {diff} outside [1, 5]")
+
+            kcs = q.get("knowledge_components")
+            if not kcs or not isinstance(kcs, list) or len(kcs) == 0:
+                errors.append(f"Item '{item_id or (topic + str(i))}': missing knowledge_components")
+
+    return {
+        "valid": len(errors) == 0,
+        "total_items": total_count,
+        "unique_ids": len(seen_ids),
+        "errors": errors,
+    }
+

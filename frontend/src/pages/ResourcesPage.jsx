@@ -8,6 +8,44 @@ const LEVEL_BADGE = {
   advanced:     { color: '#f87171', bg: 'rgba(248,113,113,0.12)',  border: 'rgba(248,113,113,0.3)' },
 };
 
+// Normalize resource data with safe fallbacks
+function normalizeVideo(video) {
+  if (!video) return null;
+  return {
+    title: video.title || 'Untitled Video',
+    channel: video.channel || 'Unknown Channel',
+    url: video.url || '#',
+    duration: video.duration_minutes || video.duration || null,
+    viewCount: video.views || null,
+  };
+}
+
+function normalizeCourse(course) {
+  if (!course) return null;
+  return {
+    title: course.title || 'Untitled Course',
+    provider: course.provider || course.platform || 'Unknown Provider',
+    url: course.url || '#',
+    level: course.level || 'beginner',
+    rating: course.rating || null,
+    learners: course.learners || null,
+    certificate: course.certificate || false,
+    verified: course.verified || false,
+    duration_hours: course.duration_hours || null,
+  };
+}
+
+function normalizeDataset(dataset) {
+  if (!dataset) return null;
+  return {
+    title: dataset.title || 'Untitled Dataset',
+    source: dataset.source || 'Unknown Source',
+    url: dataset.url || '#',
+    level: dataset.level || 'beginner',
+    description: dataset.description || 'No description available',
+  };
+}
+
 function youtubeEmbed(url) {
   if (!url) return '';
   const m = url.match(/(?:v=|youtu\.be\/)([A-Za-z0-9_-]{6,})/);
@@ -15,7 +53,10 @@ function youtubeEmbed(url) {
 }
 
 function VideoCard({ video }) {
-  const embedUrl = youtubeEmbed(video.url);
+  const normalized = normalizeVideo(video);
+  if (!normalized) return null;
+  
+  const embedUrl = youtubeEmbed(normalized.url);
   const [showEmbed, setShowEmbed] = useState(false);
   return (
     <div className="resource-card">
@@ -23,7 +64,7 @@ function VideoCard({ video }) {
         <div className="aspect-video">
           <iframe
             src={embedUrl}
-            title={video.title}
+            title={normalized.title}
             className="w-full h-full"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
@@ -41,14 +82,14 @@ function VideoCard({ video }) {
         </button>
       )}
       <div className="p-3">
-        <a href={video.url} target="_blank" rel="noreferrer"
+        <a href={normalized.url} target="_blank" rel="noreferrer"
           className="font-display font-semibold text-white text-sm hover:text-cyan-400 transition-colors leading-tight block mb-1">
-          {video.title}
+          {normalized.title}
         </a>
         <div className="text-slate-500 text-xs flex items-center gap-2">
-          <span>{video.channel}</span>
-          {video.duration && <><span>·</span><span>{video.duration}</span></>}
-          {video.viewCount && <><span>·</span><span>{video.viewCount} views</span></>}
+          <span>{normalized.channel}</span>
+          {normalized.duration && <><span>·</span><span>{normalized.duration}m</span></>}
+          {normalized.viewCount && <><span>·</span><span>{normalized.viewCount} views</span></>}
         </div>
       </div>
     </div>
@@ -56,40 +97,43 @@ function VideoCard({ video }) {
 }
 
 function CourseCard({ course }) {
-  const lvl = LEVEL_BADGE[course.level] || LEVEL_BADGE.beginner;
+  const normalized = normalizeCourse(course);
+  if (!normalized) return null;
+  
+  const lvl = LEVEL_BADGE[normalized.level] || LEVEL_BADGE.beginner;
   return (
-    <a href={course.url} target="_blank" rel="noreferrer" className="resource-card p-4 block group hover:no-underline">
+    <a href={normalized.url} target="_blank" rel="noreferrer" className="resource-card p-4 block group hover:no-underline">
       <div className="flex items-start justify-between gap-2 mb-2">
         <div className="w-9 h-9 rounded-xl bg-cyan-400/10 flex items-center justify-center flex-shrink-0">
           <BookOpen size={16} className="text-cyan-400" />
         </div>
         <div className="flex gap-1.5 flex-shrink-0">
-          {course.certificate && (
+          {normalized.certificate && (
             <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-yellow-400/10 border border-yellow-400/30 text-yellow-400 flex items-center gap-1">
               <Award size={8} /> CERT
             </span>
           )}
-          {course.verified && (
+          {normalized.verified && (
             <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-green-400/10 border border-green-400/30 text-green-400">✓ VER</span>
           )}
         </div>
       </div>
       <div className="font-display font-semibold text-white text-sm leading-tight group-hover:text-cyan-400 transition-colors mb-1">
-        {course.title}
+        {normalized.title}
       </div>
-      <div className="text-slate-500 text-xs mb-2">{course.provider}</div>
+      <div className="text-slate-500 text-xs mb-2">{normalized.provider}</div>
       <div className="flex items-center gap-3 text-xs flex-wrap">
-        {course.rating && (
+        {normalized.rating && (
           <div className="flex items-center gap-1 text-yellow-400">
             <Star size={10} fill="currentColor" />
-            <span className="font-mono font-semibold">{course.rating}</span>
+            <span className="font-mono font-semibold">{normalized.rating}</span>
           </div>
         )}
-        {course.learners && <span className="text-slate-500">{course.learners} learners</span>}
-        {course.duration_hours && <span className="text-slate-500">{course.duration_hours}h</span>}
+        {normalized.learners && <span className="text-slate-500">{normalized.learners} learners</span>}
+        {normalized.duration_hours && <span className="text-slate-500">{normalized.duration_hours}h</span>}
         <span className="px-1.5 py-0.5 rounded-md text-[10px]"
           style={{ color: lvl.color, background: lvl.bg, border: `1px solid ${lvl.border}` }}>
-          {course.level}
+          {normalized.level}
         </span>
       </div>
     </a>
@@ -97,28 +141,31 @@ function CourseCard({ course }) {
 }
 
 function DatasetCard({ dataset }) {
-  const lvl = LEVEL_BADGE[dataset.level] || LEVEL_BADGE.beginner;
+  const normalized = normalizeDataset(dataset);
+  if (!normalized) return null;
+  
+  const lvl = LEVEL_BADGE[normalized.level] || LEVEL_BADGE.beginner;
   return (
-    <a href={dataset.url} target="_blank" rel="noreferrer" className="resource-card p-4 block group">
+    <a href={normalized.url} target="_blank" rel="noreferrer" className="resource-card p-4 block group">
       <div className="flex items-start gap-3 mb-2">
         <div className="w-8 h-8 rounded-xl bg-blue-400/10 flex items-center justify-center flex-shrink-0">
           <Database size={14} className="text-blue-400" />
         </div>
         <div className="flex-1 min-w-0">
           <div className="font-display font-semibold text-white text-sm leading-tight group-hover:text-cyan-400 transition-colors truncate">
-            {dataset.title}
+            {normalized.title}
           </div>
           <div className="text-slate-500 text-xs mt-0.5 flex items-center gap-2">
-            <span>{dataset.source}</span>
+            <span>{normalized.source}</span>
             <span className="px-1.5 py-0.5 rounded text-[10px]"
               style={{ color: lvl.color, background: lvl.bg }}>
-              {dataset.level}
+              {normalized.level}
             </span>
           </div>
         </div>
         <ExternalLink size={12} className="text-slate-600 group-hover:text-cyan-400 flex-shrink-0 mt-0.5 transition-colors" />
       </div>
-      <div className="text-slate-400 text-xs leading-relaxed">{dataset.description}</div>
+      <div className="text-slate-400 text-xs leading-relaxed">{normalized.description}</div>
     </a>
   );
 }

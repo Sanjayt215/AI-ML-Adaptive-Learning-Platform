@@ -1,0 +1,78 @@
+{
+  "benchmark_title": "AutoLearn KT-RL Final Policy Comparison Benchmark",
+  "date": "2026-10-20",
+  "evaluation_protocol": {
+    "evaluation_episodes_per_policy": 100,
+    "held_out_seeds": 25,
+    "archetypes": ["fast_learner", "typical_learner", "struggling_learner", "inconsistent_learner"],
+    "steps_per_episode": 25,
+    "total_decisions_per_policy": 2500
+  },
+  "benchmark_results": {
+    "dueling_dqn": {
+      "mean_cumulative_reward": 32.22,
+      "reward_ci95": 1.93,
+      "mean_net_mastery_gain": -0.0314,
+      "net_mastery_gain_ci95": 0.0079,
+      "mean_gross_learning": 2.16,
+      "accuracy_pct": 50.0,
+      "unique_items_selected": 34,
+      "action_distribution_entropy": 4.474,
+      "total_invalid_actions": 0,
+      "mean_bkt_mae": 0.158
+    },
+    "random_eligible": {
+      "mean_cumulative_reward": 33.72,
+      "reward_ci95": 1.72,
+      "mean_net_mastery_gain": -0.0292,
+      "net_mastery_gain_ci95": 0.008,
+      "mean_gross_learning": 2.23,
+      "accuracy_pct": 46.1,
+      "unique_items_selected": 52,
+      "action_distribution_entropy": 5.679,
+      "total_invalid_actions": 0,
+      "mean_bkt_mae": 0.1601
+    },
+    "prereq_aware_weakest": {
+      "mean_cumulative_reward": 30.38,
+      "reward_ci95": 2.45,
+      "mean_net_mastery_gain": -0.0278,
+      "net_mastery_gain_ci95": 0.0085,
+      "mean_gross_learning": 2.28,
+      "accuracy_pct": 50.6,
+      "unique_items_selected": 19,
+      "action_distribution_entropy": 3.522,
+      "total_invalid_actions": 0,
+      "mean_bkt_mae": 0.1668
+    },
+    "weakest_bkt_kc": {
+      "mean_cumulative_reward": 25.43,
+      "reward_ci95": 2.54,
+      "mean_net_mastery_gain": -0.0305,
+      "net_mastery_gain_ci95": 0.0081,
+      "mean_gross_learning": 2.16,
+      "accuracy_pct": 47.2,
+      "unique_items_selected": 17,
+      "action_distribution_entropy": 3.267,
+      "total_invalid_actions": 0,
+      "mean_bkt_mae": 0.1607
+    },
+    "difficulty_ladder": {
+      "mean_cumulative_reward": 11.52,
+      "reward_ci95": 0.58,
+      "mean_net_mastery_gain": -0.0619,
+      "net_mastery_gain_ci95": 0.0051,
+      "mean_gross_learning": 1.01,
+      "accuracy_pct": 70.5,
+      "unique_items_selected": 1,
+      "action_distribution_entropy": 0.0,
+      "total_invalid_actions": 0,
+      "mean_bkt_mae": 0.088
+    }
+  },
+  "research_decision": {
+    "deploy_dqn_to_production": false,
+    "primary_rationale": "Dueling DQN achieves net mastery gain of -0.0314, failing to exceed the heuristic baseline prereq_aware_weakest (-0.0278). In accordance with pre-defined safety rules, the policy is maintained as an experimental research artifact and not deployed to real learners.",
+    "production_default": "Unified Adaptive Recommender (composite_adaptive with prereq_aware_weakest fallback)"
+  }
+}

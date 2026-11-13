@@ -1,0 +1,154 @@
+[
+  {
+    "event_id": "evt_syn_00000001",
+    "session_id": "sess_syn_learner_01",
+    "learner_id": "learner_synthetic_alpha",
+    "item_id": "q_py_01",
+    "knowledge_components": ["python"],
+    "submitted_answer": "NumPy",
+    "is_correct": true,
+    "correctness": 1,
+    "response_time_ms": 4200,
+    "attempt_number": 1,
+    "difficulty": 1,
+    "event_timestamp": "2026-10-13T10:15:30.120000+00:00",
+    "source": "synthetic_seed",
+    "metadata": {
+      "topic": "python",
+      "canonical_item_id": "q_py_01"
+    }
+  },
+  {
+    "event_id": "evt_syn_00000002",
+    "session_id": "sess_syn_learner_01",
+    "learner_id": "learner_synthetic_alpha",
+    "item_id": "q_py_02",
+    "knowledge_components": ["python"],
+    "submitted_answer": "dictionary",
+    "is_correct": true,
+    "correctness": 1,
+    "response_time_ms": 3150,
+    "attempt_number": 1,
+    "difficulty": 1,
+    "event_timestamp": "2026-10-13T10:16:02.450000+00:00",
+    "source": "synthetic_seed",
+    "metadata": {
+      "topic": "python",
+      "canonical_item_id": "q_py_02"
+    }
+  },
+  {
+    "event_id": "evt_syn_00000003",
+    "session_id": "sess_syn_learner_01",
+    "learner_id": "learner_synthetic_alpha",
+    "item_id": "q_linreg_01",
+    "knowledge_components": ["linear regression"],
+    "submitted_answer": "Regression",
+    "is_correct": true,
+    "correctness": 1,
+    "response_time_ms": 6800,
+    "attempt_number": 1,
+    "difficulty": 2,
+    "event_timestamp": "2026-10-13T10:17:15.890000+00:00",
+    "source": "synthetic_seed",
+    "metadata": {
+      "topic": "linear regression",
+      "canonical_item_id": "q_linreg_01"
+    }
+  },
+  {
+    "event_id": "evt_syn_00000004",
+    "session_id": "sess_syn_learner_01",
+    "learner_id": "learner_synthetic_alpha",
+    "item_id": "q_linreg_02",
+    "knowledge_components": ["linear regression"],
+    "submitted_answer": "Data collection",
+    "is_correct": false,
+    "correctness": 0,
+    "response_time_ms": 9400,
+    "attempt_number": 1,
+    "difficulty": 3,
+    "event_timestamp": "2026-10-13T10:18:05.110000+00:00",
+    "source": "synthetic_seed",
+    "metadata": {
+      "topic": "linear regression",
+      "canonical_item_id": "q_linreg_02"
+    }
+  },
+  {
+    "event_id": "evt_syn_00000005",
+    "session_id": "sess_syn_learner_01",
+    "learner_id": "learner_synthetic_alpha",
+    "item_id": "q_clf_01",
+    "knowledge_components": ["classification"],
+    "submitted_answer": "Predict discrete labels",
+    "is_correct": true,
+    "correctness": 1,
+    "response_time_ms": 5200,
+    "attempt_number": 1,
+    "difficulty": 2,
+    "event_timestamp": "2026-10-13T10:19:22.330000+00:00",
+    "source": "synthetic_seed",
+    "metadata": {
+      "topic": "classification",
+      "canonical_item_id": "q_clf_01"
+    }
+  },
+  {
+    "event_id": "evt_syn_00000006",
+    "session_id": "sess_syn_learner_02",
+    "learner_id": "learner_synthetic_beta",
+    "item_id": "q_nn_01",
+    "knowledge_components": ["neural networks"],
+    "submitted_answer": "Non-linearity",
+    "is_correct": true,
+    "correctness": 1,
+    "response_time_ms": 7800,
+    "attempt_number": 1,
+    "difficulty": 3,
+    "event_timestamp": "2026-10-13T11:05:14.670000+00:00",
+    "source": "synthetic_seed",
+    "metadata": {
+      "topic": "neural networks",
+      "canonical_item_id": "q_nn_01"
+    }
+  },
+  {
+    "event_id": "evt_syn_00000007",
+    "session_id": "sess_syn_learner_02",
+    "learner_id": "learner_synthetic_beta",
+    "item_id": "q_transf_01",
+    "knowledge_components": ["transformers"],
+    "submitted_answer": "Self-attention",
+    "is_correct": true,
+    "correctness": 1,
+    "response_time_ms": 4600,
+    "attempt_number": 1,
+    "difficulty": 4,
+    "event_timestamp": "2026-10-13T11:06:40.210000+00:00",
+    "source": "synthetic_seed",
+    "metadata": {
+      "topic": "transformers",
+      "canonical_item_id": "q_transf_01"
+    }
+  },
+  {
+    "event_id": "evt_syn_00000008",
+    "session_id": "sess_syn_learner_02",
+    "learner_id": "learner_synthetic_beta",
+    "item_id": "q_rl_01",
+    "knowledge_components": ["reinforcement learning"],
+    "submitted_answer": "Agents learn actions by rewards",
+    "is_correct": true,
+    "correctness": 1,
+    "response_time_ms": 5900,
+    "attempt_number": 1,
+    "difficulty": 4,
+    "event_timestamp": "2026-10-13T11:08:12.890000+00:00",
+    "source": "synthetic_seed",
+    "metadata": {
+      "topic": "reinforcement learning",
+      "canonical_item_id": "q_rl_01"
+    }
+  }
+]

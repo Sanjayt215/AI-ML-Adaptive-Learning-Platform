@@ -1,0 +1,77 @@
+{
+  "evaluation_config": {
+    "episodes_per_policy": 20,
+    "seeds": [
+      101,
+      202,
+      303,
+      404,
+      505
+    ],
+    "archetypes": [
+      "fast_learner",
+      "typical_learner",
+      "struggling_learner",
+      "inconsistent_learner"
+    ],
+    "steps_per_episode": 25,
+    "checkpoint_evaluated": "models/dqn/dueling_dqn_final.pt"
+  },
+  "policies": {
+    "dueling_dqn": {
+      "mean_cumulative_reward": 32.23,
+      "std_cumulative_reward": 8.36,
+      "mean_mastery_gain": -0.0292,
+      "std_mastery_gain": 0.0381,
+      "mean_accuracy": 0.464,
+      "std_accuracy": 0.0958,
+      "mean_episode_length": 25.0,
+      "total_invalid_actions": 0,
+      "mean_bkt_mae": 0.1413
+    },
+    "random_eligible": {
+      "mean_cumulative_reward": 32.73,
+      "std_cumulative_reward": 8.42,
+      "mean_mastery_gain": -0.026,
+      "std_mastery_gain": 0.0391,
+      "mean_accuracy": 0.428,
+      "std_accuracy": 0.0717,
+      "mean_episode_length": 25.0,
+      "total_invalid_actions": 0,
+      "mean_bkt_mae": 0.1593
+    },
+    "weakest_bkt_kc": {
+      "mean_cumulative_reward": 25.73,
+      "std_cumulative_reward": 11.04,
+      "mean_mastery_gain": -0.0273,
+      "std_mastery_gain": 0.0389,
+      "mean_accuracy": 0.458,
+      "std_accuracy": 0.0805,
+      "mean_episode_length": 25.0,
+      "total_invalid_actions": 0,
+      "mean_bkt_mae": 0.1742
+    },
+    "difficulty_ladder": {
+      "mean_cumulative_reward": 11.82,
+      "std_cumulative_reward": 3.98,
+      "mean_mastery_gain": -0.0587,
+      "std_mastery_gain": 0.0239,
+      "mean_accuracy": 0.662,
+      "std_accuracy": 0.1467,
+      "mean_episode_length": 25.0,
+      "total_invalid_actions": 0,
+      "mean_bkt_mae": 0.1013
+    },
+    "prereq_aware_weakest": {
+      "mean_cumulative_reward": 31.48,
+      "std_cumulative_reward": 10.84,
+      "mean_mastery_gain": -0.0245,
+      "std_mastery_gain": 0.0416,
+      "mean_accuracy": 0.502,
+      "std_accuracy": 0.0795,
+      "mean_episode_length": 25.0,
+      "total_invalid_actions": 0,
+      "mean_bkt_mae": 0.1843
+    }
+  }
+}

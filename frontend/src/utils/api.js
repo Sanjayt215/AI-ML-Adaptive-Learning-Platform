@@ -11,7 +11,7 @@ export async function apiFetch(url, options = {}) {
       // Use relative URL so React proxy handles it
       return targetUrl;
     }
-    const base = envBase || 'http://localhost:5000';
+    const base = envBase || 'http://localhost:5001';
     return `${base}${targetUrl}`;
   };
 
@@ -25,7 +25,7 @@ export async function apiFetch(url, options = {}) {
       },
     });
   } catch (error) {
-    throw new Error('Cannot reach backend server. Start Python backend first on port 5000.');
+    throw new Error('Cannot reach backend server. Start Python backend first on port 5001.');
   }
 
   const rawText = await response.text();

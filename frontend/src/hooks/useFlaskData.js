@@ -24,6 +24,7 @@ const fallbackState = {
   notifications: [],
   learningScore: 0,
   pathProgress: {},
+  bktMastery: null,
 };
 
 function loadStored() {
@@ -35,14 +36,83 @@ function loadStored() {
   }
 }
 
+function normalizeResource(resource = {}) {
+  if (!resource || typeof resource !== 'object') {
+    return {
+      topic: 'Unknown',
+      level: 'beginner',
+      videos: [],
+      courses: [],
+      datasets: [],
+      project: 'Practice a small project on this topic.',
+    };
+  }
+
+  return {
+    ...resource,
+    topic: resource.topic || 'Unknown',
+    level: resource.level || 'beginner',
+    project: typeof resource.project === 'string'
+      ? resource.project
+      : (resource.project?.project || 'Practice a small project on this topic.'),
+    videos: (resource.videos || []).map(video => ({
+      ...video,
+      title: video.title || 'Untitled Video',
+      channel: video.channel || 'Unknown Channel',
+      url: video.url || '#',
+      level: video.level || 'beginner',
+    })),
+    courses: (resource.courses || []).map(course => ({
+      ...course,
+      title: course.title || 'Untitled Course',
+      provider: course.provider || course.platform || 'Unknown Provider',
+      url: course.url || '#',
+      level: course.level || 'beginner',
+    })),
+    datasets: (resource.datasets || []).map(dataset => ({
+      ...dataset,
+      title: dataset.title || 'Untitled Dataset',
+      source: dataset.source || 'Unknown Source',
+      url: dataset.url || '#',
+      level: dataset.level || 'beginner',
+    })),
+  };
+}
+
+function normalizeState(state = {}) {
+  const normalized = { ...state };
+  if ('assessment' in state) {
+    normalized.assessment = Array.isArray(state.assessment) ? state.assessment : [];
+  }
+  if ('resources' in state) {
+    normalized.resources = Array.isArray(state.resources) ? state.resources.map(normalizeResource) : [];
+  }
+  if ('quizItems' in state) {
+    normalized.quizItems = Array.isArray(state.quizItems) ? state.quizItems : [];
+  }
+  if ('learningPath' in state) {
+    normalized.learningPath = Array.isArray(state.learningPath) ? state.learningPath : [];
+  }
+  if ('notifications' in state) {
+    normalized.notifications = Array.isArray(state.notifications) ? state.notifications : [];
+  }
+  if ('pathProgress' in state) {
+    normalized.pathProgress = state.pathProgress || {};
+  }
+  if ('dataInfo' in state) {
+    normalized.dataInfo = state.dataInfo || { rows: 0, real_data_used: false };
+  }
+  return normalized;
+}
+
 export function useFlaskData() {
-  const [state, setState] = useState({ ...fallbackState, ...loadStored() });
+  const [state, setState] = useState(normalizeState({ ...fallbackState, ...loadStored() }));
   const [loading, setLoading] = useState(false);
 
   const refresh = useCallback(async () => {
     setLoading(true);
     try {
-      const data = await apiFetch('/api/context');
+      const data = normalizeState(await apiFetch('/api/context'));
       setState(prev => {
         const next = { ...prev, ...data };
         sessionStorage.setItem(STORAGE_KEY, JSON.stringify(next));
@@ -61,8 +131,9 @@ export function useFlaskData() {
   }, [refresh]);
 
   const savePartial = useCallback((partial) => {
+    const normalizedPartial = normalizeState(partial);
     setState(prev => {
-      const next = { ...prev, ...partial };
+      const next = { ...prev, ...normalizedPartial };
       sessionStorage.setItem(STORAGE_KEY, JSON.stringify(next));
       return next;
     });

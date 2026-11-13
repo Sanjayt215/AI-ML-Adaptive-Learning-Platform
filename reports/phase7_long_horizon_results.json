@@ -1,0 +1,119 @@
+{
+  "benchmark_metadata": {
+    "title": "KT-RL Phase 7 Long-Horizon Retention Benchmark (7.0d Inactivity)",
+    "timestamp": "2026-10-22T14:02:37Z",
+    "delay_days": 7.0,
+    "seeds": [
+      101,
+      202,
+      303,
+      404,
+      505
+    ],
+    "archetypes": [
+      "fast_learner",
+      "typical_learner",
+      "struggling_learner",
+      "inconsistent_learner"
+    ],
+    "episodes_per_policy": 20
+  },
+  "policies": {
+    "prereq_aware_weakest": {
+      "policy": "prereq_aware_weakest",
+      "episodes_evaluated": 20,
+      "active_steps": 25,
+      "delay_days": 7.0,
+      "mean_gross_learning": 2.0871,
+      "mean_immediate_net_gain": -0.0245,
+      "mean_delayed_net_gain": -0.0459,
+      "mean_forgetting_loss": 0.0214,
+      "mean_retention_rate": 0.8731,
+      "delayed_gain_ci95": 0.0188
+    },
+    "weakest_bkt_kc": {
+      "policy": "weakest_bkt_kc",
+      "episodes_evaluated": 20,
+      "active_steps": 25,
+      "delay_days": 7.0,
+      "mean_gross_learning": 1.9536,
+      "mean_immediate_net_gain": -0.0273,
+      "mean_delayed_net_gain": -0.0484,
+      "mean_forgetting_loss": 0.0211,
+      "mean_retention_rate": 0.8738,
+      "delayed_gain_ci95": 0.0178
+    },
+    "random_eligible": {
+      "policy": "random_eligible",
+      "episodes_evaluated": 20,
+      "active_steps": 25,
+      "delay_days": 7.0,
+      "mean_gross_learning": 2.0446,
+      "mean_immediate_net_gain": -0.026,
+      "mean_delayed_net_gain": -0.0473,
+      "mean_forgetting_loss": 0.0213,
+      "mean_retention_rate": 0.8735,
+      "delayed_gain_ci95": 0.0179
+    },
+    "forgetting_aware": {
+      "policy": "forgetting_aware",
+      "episodes_evaluated": 20,
+      "active_steps": 25,
+      "delay_days": 7.0,
+      "mean_gross_learning": 1.9536,
+      "mean_immediate_net_gain": -0.0273,
+      "mean_delayed_net_gain": -0.0484,
+      "mean_forgetting_loss": 0.0211,
+      "mean_retention_rate": 0.8738,
+      "delayed_gain_ci95": 0.0178
+    },
+    "confidence_aware": {
+      "policy": "confidence_aware",
+      "episodes_evaluated": 20,
+      "active_steps": 25,
+      "delay_days": 7.0,
+      "mean_gross_learning": 1.7879,
+      "mean_immediate_net_gain": -0.0302,
+      "mean_delayed_net_gain": -0.0509,
+      "mean_forgetting_loss": 0.0206,
+      "mean_retention_rate": 0.875,
+      "delayed_gain_ci95": 0.0172
+    },
+    "frustration_remedial": {
+      "policy": "frustration_remedial",
+      "episodes_evaluated": 20,
+      "active_steps": 25,
+      "delay_days": 7.0,
+      "mean_gross_learning": 1.8044,
+      "mean_immediate_net_gain": -0.0309,
+      "mean_delayed_net_gain": -0.0515,
+      "mean_forgetting_loss": 0.0206,
+      "mean_retention_rate": 0.8746,
+      "delayed_gain_ci95": 0.0172
+    },
+    "composite_adaptive": {
+      "policy": "composite_adaptive",
+      "episodes_evaluated": 20,
+      "active_steps": 25,
+      "delay_days": 7.0,
+      "mean_gross_learning": 1.9708,
+      "mean_immediate_net_gain": -0.0275,
+      "mean_delayed_net_gain": -0.0486,
+      "mean_forgetting_loss": 0.0211,
+      "mean_retention_rate": 0.8736,
+      "delayed_gain_ci95": 0.0175
+    },
+    "dueling_dqn": {
+      "policy": "dueling_dqn",
+      "episodes_evaluated": 20,
+      "active_steps": 25,
+      "delay_days": 7.0,
+      "mean_gross_learning": 1.9038,
+      "mean_immediate_net_gain": -0.0292,
+      "mean_delayed_net_gain": -0.05,
+      "mean_forgetting_loss": 0.0208,
+      "mean_retention_rate": 0.8742,
+      "delayed_gain_ci95": 0.0174
+    }
+  }
+}

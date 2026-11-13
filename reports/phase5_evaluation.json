@@ -1,0 +1,597 @@
+{
+  "evaluation_config": {
+    "eval_seeds": [
+      1001,
+      1002,
+      1003,
+      1004,
+      1005,
+      1006,
+      1007,
+      1008,
+      1009,
+      1010,
+      1011,
+      1012,
+      1013,
+      1014,
+      1015,
+      1016,
+      1017,
+      1018,
+      1019,
+      1020,
+      1021,
+      1022,
+      1023,
+      1024,
+      1025
+    ],
+    "archetypes": [
+      "fast_learner",
+      "typical_learner",
+      "struggling_learner",
+      "inconsistent_learner"
+    ],
+    "episodes_per_policy": 100,
+    "checkpoint_evaluated": "models/dqn/dueling_dqn_final.pt",
+    "steps_per_episode": 25
+  },
+  "policies": {
+    "dueling_dqn": {
+      "overall": {
+        "n_episodes": 100,
+        "mean_cumulative_reward": 32.22,
+        "std_cumulative_reward": 9.86,
+        "reward_ci95": 1.93,
+        "mean_net_mastery_gain": -0.0314,
+        "std_net_mastery_gain": 0.0401,
+        "net_mastery_gain_ci95": 0.0079,
+        "mean_gross_learning": 2.158,
+        "mean_accuracy": 0.5004,
+        "mean_episode_length": 25.0,
+        "total_invalid_actions": 0,
+        "mean_bkt_mae": 0.158,
+        "mean_reward_components": {
+          "mastery_gain_reward": 21.58,
+          "information_entropy_reward": 9.32,
+          "zpd_match_reward": 6.99,
+          "failure_penalty": -4.42,
+          "step_cost": -1.25
+        },
+        "unique_items_selected": 34,
+        "action_distribution_entropy": 4.474
+      },
+      "per_archetype": {
+        "fast_learner": {
+          "n_episodes": 25,
+          "mean_cumulative_reward": 43.55,
+          "std_cumulative_reward": 3.61,
+          "reward_ci95": 1.42,
+          "mean_net_mastery_gain": 0.0264,
+          "std_net_mastery_gain": 0.0128,
+          "net_mastery_gain_ci95": 0.005,
+          "mean_gross_learning": 3.1232,
+          "mean_accuracy": 0.5856,
+          "mean_episode_length": 25.0,
+          "total_invalid_actions": 0,
+          "mean_bkt_mae": 0.1337,
+          "mean_reward_components": {
+            "mastery_gain_reward": 31.23,
+            "information_entropy_reward": 9.13,
+            "zpd_match_reward": 6.64,
+            "failure_penalty": -2.21,
+            "step_cost": -1.25
+          }
+        },
+        "typical_learner": {
+          "n_episodes": 25,
+          "mean_cumulative_reward": 33.67,
+          "std_cumulative_reward": 5.06,
+          "reward_ci95": 1.99,
+          "mean_net_mastery_gain": -0.0354,
+          "std_net_mastery_gain": 0.0126,
+          "net_mastery_gain_ci95": 0.005,
+          "mean_gross_learning": 2.2605,
+          "mean_accuracy": 0.4992,
+          "mean_episode_length": 25.0,
+          "total_invalid_actions": 0,
+          "mean_bkt_mae": 0.1404,
+          "mean_reward_components": {
+            "mastery_gain_reward": 22.61,
+            "information_entropy_reward": 9.34,
+            "zpd_match_reward": 7.02,
+            "failure_penalty": -4.03,
+            "step_cost": -1.25
+          }
+        },
+        "struggling_learner": {
+          "n_episodes": 25,
+          "mean_cumulative_reward": 21.19,
+          "std_cumulative_reward": 6.75,
+          "reward_ci95": 2.64,
+          "mean_net_mastery_gain": -0.0375,
+          "std_net_mastery_gain": 0.0099,
+          "net_mastery_gain_ci95": 0.0039,
+          "mean_gross_learning": 1.2426,
+          "mean_accuracy": 0.4256,
+          "mean_episode_length": 25.0,
+          "total_invalid_actions": 0,
+          "mean_bkt_mae": 0.2024,
+          "mean_reward_components": {
+            "mastery_gain_reward": 12.43,
+            "information_entropy_reward": 9.38,
+            "zpd_match_reward": 7.23,
+            "failure_penalty": -6.59,
+            "step_cost": -1.25
+          }
+        },
+        "inconsistent_learner": {
+          "n_episodes": 25,
+          "mean_cumulative_reward": 30.47,
+          "std_cumulative_reward": 7.01,
+          "reward_ci95": 2.75,
+          "mean_net_mastery_gain": -0.0789,
+          "std_net_mastery_gain": 0.019,
+          "net_mastery_gain_ci95": 0.0075,
+          "mean_gross_learning": 2.0057,
+          "mean_accuracy": 0.4912,
+          "mean_episode_length": 25.0,
+          "total_invalid_actions": 0,
+          "mean_bkt_mae": 0.1556,
+          "mean_reward_components": {
+            "mastery_gain_reward": 20.06,
+            "information_entropy_reward": 9.44,
+            "zpd_match_reward": 7.09,
+            "failure_penalty": -4.86,
+            "step_cost": -1.25
+          }
+        }
+      }
+    },
+    "random_eligible": {
+      "overall": {
+        "n_episodes": 100,
+        "mean_cumulative_reward": 33.72,
+        "std_cumulative_reward": 8.76,
+        "reward_ci95": 1.72,
+        "mean_net_mastery_gain": -0.0292,
+        "std_net_mastery_gain": 0.041,
+        "net_mastery_gain_ci95": 0.008,
+        "mean_gross_learning": 2.229,
+        "mean_accuracy": 0.4608,
+        "mean_episode_length": 25.0,
+        "total_invalid_actions": 0,
+        "mean_bkt_mae": 0.1616,
+        "mean_reward_components": {
+          "mastery_gain_reward": 22.29,
+          "information_entropy_reward": 9.33,
+          "zpd_match_reward": 6.1,
+          "failure_penalty": -2.75,
+          "step_cost": -1.25
+        },
+        "unique_items_selected": 52,
+        "action_distribution_entropy": 5.586
+      },
+      "per_archetype": {
+        "fast_learner": {
+          "n_episodes": 25,
+          "mean_cumulative_reward": 44.75,
+          "std_cumulative_reward": 4.0,
+          "reward_ci95": 1.57,
+          "mean_net_mastery_gain": 0.0312,
+          "std_net_mastery_gain": 0.012,
+          "net_mastery_gain_ci95": 0.0047,
+          "mean_gross_learning": 3.2764,
+          "mean_accuracy": 0.5056,
+          "mean_episode_length": 25.0,
+          "total_invalid_actions": 0,
+          "mean_bkt_mae": 0.1443,
+          "mean_reward_components": {
+            "mastery_gain_reward": 32.76,
+            "information_entropy_reward": 9.33,
+            "zpd_match_reward": 6.09,
+            "failure_penalty": -2.18,
+            "step_cost": -1.25
+          }
+        },
+        "typical_learner": {
+          "n_episodes": 25,
+          "mean_cumulative_reward": 34.68,
+          "std_cumulative_reward": 3.56,
+          "reward_ci95": 1.4,
+          "mean_net_mastery_gain": -0.0338,
+          "std_net_mastery_gain": 0.0125,
+          "net_mastery_gain_ci95": 0.0049,
+          "mean_gross_learning": 2.312,
+          "mean_accuracy": 0.4544,
+          "mean_episode_length": 25.0,
+          "total_invalid_actions": 0,
+          "mean_bkt_mae": 0.139,
+          "mean_reward_components": {
+            "mastery_gain_reward": 23.12,
+            "information_entropy_reward": 9.34,
+            "zpd_match_reward": 6.06,
+            "failure_penalty": -2.59,
+            "step_cost": -1.25
+          }
+        },
+        "struggling_learner": {
+          "n_episodes": 25,
+          "mean_cumulative_reward": 22.58,
+          "std_cumulative_reward": 4.21,
+          "reward_ci95": 1.65,
+          "mean_net_mastery_gain": -0.0373,
+          "std_net_mastery_gain": 0.0099,
+          "net_mastery_gain_ci95": 0.0039,
+          "mean_gross_learning": 1.2501,
+          "mean_accuracy": 0.3984,
+          "mean_episode_length": 25.0,
+          "total_invalid_actions": 0,
+          "mean_bkt_mae": 0.201,
+          "mean_reward_components": {
+            "mastery_gain_reward": 12.5,
+            "information_entropy_reward": 9.27,
+            "zpd_match_reward": 6.03,
+            "failure_penalty": -3.97,
+            "step_cost": -1.25
+          }
+        },
+        "inconsistent_learner": {
+          "n_episodes": 25,
+          "mean_cumulative_reward": 32.86,
+          "std_cumulative_reward": 3.66,
+          "reward_ci95": 1.43,
+          "mean_net_mastery_gain": -0.077,
+          "std_net_mastery_gain": 0.0181,
+          "net_mastery_gain_ci95": 0.0071,
+          "mean_gross_learning": 2.0776,
+          "mean_accuracy": 0.4848,
+          "mean_episode_length": 25.0,
+          "total_invalid_actions": 0,
+          "mean_bkt_mae": 0.1621,
+          "mean_reward_components": {
+            "mastery_gain_reward": 20.78,
+            "information_entropy_reward": 9.39,
+            "zpd_match_reward": 6.22,
+            "failure_penalty": -2.27,
+            "step_cost": -1.25
+          }
+        }
+      }
+    },
+    "weakest_bkt_kc": {
+      "overall": {
+        "n_episodes": 100,
+        "mean_cumulative_reward": 25.43,
+        "std_cumulative_reward": 12.98,
+        "reward_ci95": 2.54,
+        "mean_net_mastery_gain": -0.0305,
+        "std_net_mastery_gain": 0.0414,
+        "net_mastery_gain_ci95": 0.0081,
+        "mean_gross_learning": 2.1628,
+        "mean_accuracy": 0.472,
+        "mean_episode_length": 25.0,
+        "total_invalid_actions": 0,
+        "mean_bkt_mae": 0.1766,
+        "mean_reward_components": {
+          "mastery_gain_reward": 21.63,
+          "information_entropy_reward": 8.67,
+          "zpd_match_reward": 6.1,
+          "failure_penalty": -9.72,
+          "step_cost": -1.25
+        },
+        "unique_items_selected": 17,
+        "action_distribution_entropy": 3.832
+      },
+      "per_archetype": {
+        "fast_learner": {
+          "n_episodes": 25,
+          "mean_cumulative_reward": 38.21,
+          "std_cumulative_reward": 8.14,
+          "reward_ci95": 3.19,
+          "mean_net_mastery_gain": 0.0299,
+          "std_net_mastery_gain": 0.0137,
+          "net_mastery_gain_ci95": 0.0054,
+          "mean_gross_learning": 3.222,
+          "mean_accuracy": 0.5184,
+          "mean_episode_length": 25.0,
+          "total_invalid_actions": 0,
+          "mean_bkt_mae": 0.0966,
+          "mean_reward_components": {
+            "mastery_gain_reward": 32.22,
+            "information_entropy_reward": 8.7,
+            "zpd_match_reward": 5.99,
+            "failure_penalty": -7.46,
+            "step_cost": -1.25
+          }
+        },
+        "typical_learner": {
+          "n_episodes": 25,
+          "mean_cumulative_reward": 27.01,
+          "std_cumulative_reward": 8.46,
+          "reward_ci95": 3.32,
+          "mean_net_mastery_gain": -0.0354,
+          "std_net_mastery_gain": 0.0139,
+          "net_mastery_gain_ci95": 0.0054,
+          "mean_gross_learning": 2.2299,
+          "mean_accuracy": 0.472,
+          "mean_episode_length": 25.0,
+          "total_invalid_actions": 0,
+          "mean_bkt_mae": 0.1722,
+          "mean_reward_components": {
+            "mastery_gain_reward": 22.3,
+            "information_entropy_reward": 8.67,
+            "zpd_match_reward": 6.13,
+            "failure_penalty": -8.83,
+            "step_cost": -1.25
+          }
+        },
+        "struggling_learner": {
+          "n_episodes": 25,
+          "mean_cumulative_reward": 12.0,
+          "std_cumulative_reward": 10.77,
+          "reward_ci95": 4.22,
+          "mean_net_mastery_gain": -0.0378,
+          "std_net_mastery_gain": 0.0099,
+          "net_mastery_gain_ci95": 0.0039,
+          "mean_gross_learning": 1.2097,
+          "mean_accuracy": 0.4128,
+          "mean_episode_length": 25.0,
+          "total_invalid_actions": 0,
+          "mean_bkt_mae": 0.2428,
+          "mean_reward_components": {
+            "mastery_gain_reward": 12.1,
+            "information_entropy_reward": 8.63,
+            "zpd_match_reward": 6.16,
+            "failure_penalty": -13.63,
+            "step_cost": -1.25
+          }
+        },
+        "inconsistent_learner": {
+          "n_episodes": 25,
+          "mean_cumulative_reward": 24.51,
+          "std_cumulative_reward": 8.57,
+          "reward_ci95": 3.36,
+          "mean_net_mastery_gain": -0.0785,
+          "std_net_mastery_gain": 0.0192,
+          "net_mastery_gain_ci95": 0.0075,
+          "mean_gross_learning": 1.9898,
+          "mean_accuracy": 0.4848,
+          "mean_episode_length": 25.0,
+          "total_invalid_actions": 0,
+          "mean_bkt_mae": 0.195,
+          "mean_reward_components": {
+            "mastery_gain_reward": 19.9,
+            "information_entropy_reward": 8.68,
+            "zpd_match_reward": 6.14,
+            "failure_penalty": -8.96,
+            "step_cost": -1.25
+          }
+        }
+      }
+    },
+    "difficulty_ladder": {
+      "overall": {
+        "n_episodes": 100,
+        "mean_cumulative_reward": 11.52,
+        "std_cumulative_reward": 2.95,
+        "reward_ci95": 0.58,
+        "mean_net_mastery_gain": -0.0619,
+        "std_net_mastery_gain": 0.0258,
+        "net_mastery_gain_ci95": 0.0051,
+        "mean_gross_learning": 1.0087,
+        "mean_accuracy": 0.7052,
+        "mean_episode_length": 25.0,
+        "total_invalid_actions": 0,
+        "mean_bkt_mae": 0.102,
+        "mean_reward_components": {
+          "mastery_gain_reward": 10.09,
+          "information_entropy_reward": 3.75,
+          "zpd_match_reward": 2.07,
+          "failure_penalty": -3.14,
+          "step_cost": -1.25
+        },
+        "unique_items_selected": 1,
+        "action_distribution_entropy": -0.0
+      },
+      "per_archetype": {
+        "fast_learner": {
+          "n_episodes": 25,
+          "mean_cumulative_reward": 9.98,
+          "std_cumulative_reward": 1.6,
+          "reward_ci95": 0.63,
+          "mean_net_mastery_gain": -0.0416,
+          "std_net_mastery_gain": 0.0061,
+          "net_mastery_gain_ci95": 0.0024,
+          "mean_gross_learning": 0.8486,
+          "mean_accuracy": 0.8672,
+          "mean_episode_length": 25.0,
+          "total_invalid_actions": 0,
+          "mean_bkt_mae": 0.0982,
+          "mean_reward_components": {
+            "mastery_gain_reward": 8.49,
+            "information_entropy_reward": 2.16,
+            "zpd_match_reward": 1.22,
+            "failure_penalty": -0.64,
+            "step_cost": -1.25
+          }
+        },
+        "typical_learner": {
+          "n_episodes": 25,
+          "mean_cumulative_reward": 12.69,
+          "std_cumulative_reward": 2.14,
+          "reward_ci95": 0.84,
+          "mean_net_mastery_gain": -0.0638,
+          "std_net_mastery_gain": 0.0104,
+          "net_mastery_gain_ci95": 0.0041,
+          "mean_gross_learning": 1.1158,
+          "mean_accuracy": 0.7376,
+          "mean_episode_length": 25.0,
+          "total_invalid_actions": 0,
+          "mean_bkt_mae": 0.0787,
+          "mean_reward_components": {
+            "mastery_gain_reward": 11.16,
+            "information_entropy_reward": 3.08,
+            "zpd_match_reward": 1.78,
+            "failure_penalty": -2.08,
+            "step_cost": -1.25
+          }
+        },
+        "struggling_learner": {
+          "n_episodes": 25,
+          "mean_cumulative_reward": 10.86,
+          "std_cumulative_reward": 3.61,
+          "reward_ci95": 1.42,
+          "mean_net_mastery_gain": -0.0432,
+          "std_net_mastery_gain": 0.0095,
+          "net_mastery_gain_ci95": 0.0037,
+          "mean_gross_learning": 0.9544,
+          "mean_accuracy": 0.5792,
+          "mean_episode_length": 25.0,
+          "total_invalid_actions": 0,
+          "mean_bkt_mae": 0.1424,
+          "mean_reward_components": {
+            "mastery_gain_reward": 9.54,
+            "information_entropy_reward": 5.27,
+            "zpd_match_reward": 2.96,
+            "failure_penalty": -5.66,
+            "step_cost": -1.25
+          }
+        },
+        "inconsistent_learner": {
+          "n_episodes": 25,
+          "mean_cumulative_reward": 12.57,
+          "std_cumulative_reward": 3.04,
+          "reward_ci95": 1.19,
+          "mean_net_mastery_gain": -0.099,
+          "std_net_mastery_gain": 0.017,
+          "net_mastery_gain_ci95": 0.0067,
+          "mean_gross_learning": 1.1162,
+          "mean_accuracy": 0.6368,
+          "mean_episode_length": 25.0,
+          "total_invalid_actions": 0,
+          "mean_bkt_mae": 0.0888,
+          "mean_reward_components": {
+            "mastery_gain_reward": 11.16,
+            "information_entropy_reward": 4.48,
+            "zpd_match_reward": 2.34,
+            "failure_penalty": -4.16,
+            "step_cost": -1.25
+          }
+        }
+      }
+    },
+    "prereq_aware_weakest": {
+      "overall": {
+        "n_episodes": 100,
+        "mean_cumulative_reward": 30.38,
+        "std_cumulative_reward": 12.5,
+        "reward_ci95": 2.45,
+        "mean_net_mastery_gain": -0.0278,
+        "std_net_mastery_gain": 0.0433,
+        "net_mastery_gain_ci95": 0.0085,
+        "mean_gross_learning": 2.2783,
+        "mean_accuracy": 0.5064,
+        "mean_episode_length": 25.0,
+        "total_invalid_actions": 0,
+        "mean_bkt_mae": 0.1845,
+        "mean_reward_components": {
+          "mastery_gain_reward": 22.78,
+          "information_entropy_reward": 8.7,
+          "zpd_match_reward": 8.15,
+          "failure_penalty": -8.01,
+          "step_cost": -1.25
+        },
+        "unique_items_selected": 19,
+        "action_distribution_entropy": 3.938
+      },
+      "per_archetype": {
+        "fast_learner": {
+          "n_episodes": 25,
+          "mean_cumulative_reward": 44.93,
+          "std_cumulative_reward": 6.48,
+          "reward_ci95": 2.54,
+          "mean_net_mastery_gain": 0.0363,
+          "std_net_mastery_gain": 0.0139,
+          "net_mastery_gain_ci95": 0.0054,
+          "mean_gross_learning": 3.4506,
+          "mean_accuracy": 0.5696,
+          "mean_episode_length": 25.0,
+          "total_invalid_actions": 0,
+          "mean_bkt_mae": 0.1033,
+          "mean_reward_components": {
+            "mastery_gain_reward": 34.51,
+            "information_entropy_reward": 8.74,
+            "zpd_match_reward": 8.09,
+            "failure_penalty": -5.15,
+            "step_cost": -1.25
+          }
+        },
+        "typical_learner": {
+          "n_episodes": 25,
+          "mean_cumulative_reward": 31.67,
+          "std_cumulative_reward": 6.81,
+          "reward_ci95": 2.67,
+          "mean_net_mastery_gain": -0.033,
+          "std_net_mastery_gain": 0.0135,
+          "net_mastery_gain_ci95": 0.0053,
+          "mean_gross_learning": 2.3468,
+          "mean_accuracy": 0.5088,
+          "mean_episode_length": 25.0,
+          "total_invalid_actions": 0,
+          "mean_bkt_mae": 0.1822,
+          "mean_reward_components": {
+            "mastery_gain_reward": 23.47,
+            "information_entropy_reward": 8.7,
+            "zpd_match_reward": 8.15,
+            "failure_penalty": -7.39,
+            "step_cost": -1.25
+          }
+        },
+        "struggling_learner": {
+          "n_episodes": 25,
+          "mean_cumulative_reward": 16.74,
+          "std_cumulative_reward": 8.47,
+          "reward_ci95": 3.32,
+          "mean_net_mastery_gain": -0.0372,
+          "std_net_mastery_gain": 0.0099,
+          "net_mastery_gain_ci95": 0.0039,
+          "mean_gross_learning": 1.2548,
+          "mean_accuracy": 0.4416,
+          "mean_episode_length": 25.0,
+          "total_invalid_actions": 0,
+          "mean_bkt_mae": 0.2518,
+          "mean_reward_components": {
+            "mastery_gain_reward": 12.55,
+            "information_entropy_reward": 8.65,
+            "zpd_match_reward": 8.22,
+            "failure_penalty": -11.42,
+            "step_cost": -1.25
+          }
+        },
+        "inconsistent_learner": {
+          "n_episodes": 25,
+          "mean_cumulative_reward": 28.16,
+          "std_cumulative_reward": 7.78,
+          "reward_ci95": 3.05,
+          "mean_net_mastery_gain": -0.0773,
+          "std_net_mastery_gain": 0.0189,
+          "net_mastery_gain_ci95": 0.0074,
+          "mean_gross_learning": 2.0611,
+          "mean_accuracy": 0.5056,
+          "mean_episode_length": 25.0,
+          "total_invalid_actions": 0,
+          "mean_bkt_mae": 0.2007,
+          "mean_reward_components": {
+            "mastery_gain_reward": 20.61,
+            "information_entropy_reward": 8.7,
+            "zpd_match_reward": 8.16,
+            "failure_penalty": -8.06,
+            "step_cost": -1.25
+          }
+        }
+      }
+    }
+  }
+}

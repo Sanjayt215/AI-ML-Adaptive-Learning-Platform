@@ -1,0 +1,132 @@
+{
+  "project": "Knowledge-Tracing-Guided Reinforcement Learning for Personalized Exercise Selection",
+  "version": "Phase 8 Evaluation Standard",
+  "mastery_threshold": 0.80,
+  "epsilon": 1e-6,
+  "test_cases": [
+    {
+      "case_id": "TC-01-Standard-Improvement",
+      "description": "Learner progresses from low prior knowledge to substantial mastery with minor retention decay",
+      "inputs": {
+        "p_pre": 0.25,
+        "p_post": 0.75,
+        "p_delayed": 0.65,
+        "num_exercises": 10,
+        "time_min": 15.0,
+        "num_kcs": 1,
+        "pre_mastered_kcs": 0,
+        "post_mastered_kcs": 0
+      },
+      "expected_outputs": {
+        "gross_learning_gain": 0.50,
+        "normalized_learning_gain": 0.666667,
+        "net_mastery_delta": 0,
+        "retention_rate": 0.866667,
+        "retained_mastery_gain": 0.40,
+        "normalized_retained_gain": 0.533333,
+        "exercise_efficiency": 0.05,
+        "time_efficiency_per_min": 0.033333
+      }
+    },
+    {
+      "case_id": "TC-02-Ceiling-Effect",
+      "description": "Learner starts at full mastery (1.0). Headroom is zero, normalized gain returns safe 0.0",
+      "inputs": {
+        "p_pre": 1.0,
+        "p_post": 1.0,
+        "p_delayed": 1.0,
+        "num_exercises": 5,
+        "time_min": 8.0,
+        "num_kcs": 1,
+        "pre_mastered_kcs": 1,
+        "post_mastered_kcs": 1
+      },
+      "expected_outputs": {
+        "gross_learning_gain": 0.0,
+        "normalized_learning_gain": 0.0,
+        "net_mastery_delta": 0,
+        "retention_rate": 1.0,
+        "retained_mastery_gain": 0.0,
+        "normalized_retained_gain": 0.0,
+        "exercise_efficiency": 0.0,
+        "time_efficiency_per_min": 0.0
+      }
+    },
+    {
+      "case_id": "TC-03-Zero-Initial-State",
+      "description": "Learner begins with zero prior knowledge and crosses mastery threshold",
+      "inputs": {
+        "p_pre": 0.0,
+        "p_post": 0.85,
+        "p_delayed": 0.80,
+        "num_exercises": 20,
+        "time_min": 25.0,
+        "num_kcs": 1,
+        "pre_mastered_kcs": 0,
+        "post_mastered_kcs": 1
+      },
+      "expected_outputs": {
+        "gross_learning_gain": 0.85,
+        "normalized_learning_gain": 0.85,
+        "net_mastery_delta": 1,
+        "retention_rate": 0.941176,
+        "retained_mastery_gain": 0.80,
+        "normalized_retained_gain": 0.80,
+        "exercise_efficiency": 0.0425,
+        "time_efficiency_per_min": 0.0340
+      }
+    },
+    {
+      "case_id": "TC-04-Skill-Deterioration",
+      "description": "Learner experiences confusion or forgetting, leading to negative gain",
+      "inputs": {
+        "p_pre": 0.60,
+        "p_post": 0.40,
+        "p_delayed": 0.35,
+        "num_exercises": 12,
+        "time_min": 18.0,
+        "num_kcs": 1,
+        "pre_mastered_kcs": 0,
+        "post_mastered_kcs": 0
+      },
+      "expected_outputs": {
+        "gross_learning_gain": -0.20,
+        "normalized_learning_gain": -0.333333,
+        "net_mastery_delta": 0,
+        "retention_rate": 0.875,
+        "retained_mastery_gain": -0.25,
+        "normalized_retained_gain": -0.625,
+        "exercise_efficiency": -0.016667,
+        "time_efficiency_per_min": -0.011111
+      }
+    },
+    {
+      "case_id": "TC-05-Multi-KC-Curriculum",
+      "description": "Aggregated 5-KC assessment testing net binary mastery delta and macro-averaged metrics",
+      "inputs": {
+        "kc_ids": ["py_var_assign", "py_for_loops", "py_fn_def", "py_list_ops", "py_rec_base"],
+        "p_pre_vector": [0.30, 0.20, 0.50, 0.70, 0.10],
+        "p_post_vector": [0.85, 0.82, 0.88, 0.95, 0.45],
+        "p_delayed_vector": [0.80, 0.78, 0.84, 0.90, 0.40],
+        "num_exercises": 25,
+        "time_min": 35.0
+      },
+      "expected_outputs": {
+        "macro_p_pre": 0.36,
+        "macro_p_post": 0.79,
+        "macro_p_delayed": 0.744,
+        "gross_learning_gain": 0.43,
+        "normalized_learning_gain": 0.671875,
+        "pre_mastered_kcs": 0,
+        "post_mastered_kcs": 4,
+        "net_mastery_delta": 4,
+        "delayed_mastered_kcs": 3,
+        "retention_rate": 0.941772,
+        "retained_mastery_gain": 0.384,
+        "normalized_retained_gain": 0.60,
+        "exercise_efficiency": 0.0172,
+        "time_efficiency_per_min": 0.012286
+      }
+    }
+  ]
+}

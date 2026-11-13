@@ -1,0 +1,74 @@
+{
+  "project": "Knowledge-Tracing-Guided Reinforcement Learning for Personalized Exercise Selection",
+  "application": "AutoLearn AI Adaptive Learning Platform",
+  "phase": "Phase 7 — Policy Audit, Advanced RL Improvements & Verified Integration",
+  "timestamp": "2026-10-22T14:10:00Z",
+  "researchers": [
+    {"name": "T. Sanjay", "roll": "E0124009"},
+    {"name": "M. Nithish Kumar", "roll": "E0124027"}
+  ],
+  "experiments_executed": [
+    {
+      "experiment_id": "EXP-701-BASELINE-VERIFICATION",
+      "purpose": "Verify baseline test suite and live HTTP API routes without modifications.",
+      "script": "autolearn_fullstack/tests/live_system_acceptance.py",
+      "test_framework": "unittest",
+      "tests_run": 59,
+      "tests_passed": 59,
+      "live_endpoints_tested": 12,
+      "live_endpoints_passed": 12,
+      "status": "COMPLETED_PASS",
+      "artifact": "KT_RL_PHASE_7_BASELINE_AUDIT.md"
+    },
+    {
+      "experiment_id": "EXP-702-FORGETTING-VS-WEAKEST-INVESTIGATION",
+      "purpose": "Investigate why forgetting_aware and weakest_bkt_kc produced identical Phase 6 numbers.",
+      "hypothesis": "Uniform start at t=0 makes retention decay a monotonic transform of raw prior mastery.",
+      "script": "autolearn_fullstack/reports/phase7_feature_verification.md",
+      "findings": "Mathematically confirmed. Staggered practice intervals differentiate rankings.",
+      "status": "COMPLETED_VERIFIED"
+    },
+    {
+      "experiment_id": "EXP-703-REWARD-ALIGNMENT-AUDIT",
+      "purpose": "Decompose reward terms and evaluate Pearson correlation with true mastery gain.",
+      "script": "autolearn_fullstack/services/reward_diagnostics.py",
+      "seeds": [101, 202, 303, 404, 505],
+      "archetypes": ["fast_learner", "typical_learner", "struggling_learner", "inconsistent_learner"],
+      "findings": "Static entropy accounts for 27.6% - 29.3% of reward. Aligned reward boosts prereq_aware_weakest correlation to r=+0.78.",
+      "status": "COMPLETED_PASS",
+      "artifact": "reports/phase7_reward_audit.md"
+    },
+    {
+      "experiment_id": "EXP-704-LONG-HORIZON-RETENTION",
+      "purpose": "Evaluate 7-day delayed retained mastery and active gross learning across 8 policies.",
+      "script": "autolearn_fullstack/services/long_horizon_eval.py",
+      "delay_days": 7.0,
+      "seeds": [101, 202, 303, 404, 505],
+      "episodes": 160,
+      "findings": "prereq_aware_weakest achieved best delayed retained gain (-0.0459 +/- 0.0188).",
+      "status": "COMPLETED_PASS",
+      "artifact": "reports/phase7_long_horizon_results.json"
+    },
+    {
+      "experiment_id": "EXP-705-GENERALIZATION-ROBUSTNESS",
+      "purpose": "Evaluate out-of-distribution robustness across 4 conditions (unseen seeds, T=40, cohort shifts).",
+      "script": "autolearn_fullstack/services/generalization_eval.py",
+      "conditions": ["unseen_seeds", "extended_horizon_40steps", "struggling_cohort_shift", "fast_cohort_shift"],
+      "total_episodes": 400,
+      "findings": "prereq_aware_weakest outperformed Dueling DQN across all 4 out-of-distribution conditions.",
+      "status": "COMPLETED_PASS",
+      "artifact": "reports/phase7_generalization_results.json"
+    },
+    {
+      "experiment_id": "EXP-706-TEN-POLICY-BENCHMARK",
+      "purpose": "Evaluate 10 policies including newly implemented LinUCB Contextual Bandit.",
+      "script": "autolearn_fullstack/services/evaluate_all_10_policies.py",
+      "policies_evaluated": 10,
+      "seeds": [101, 202, 303, 404, 505],
+      "episodes": 200,
+      "findings": "composite_adaptive achieved highest reward (36.04), prereq_aware_weakest achieved highest gross learning (+2.27).",
+      "status": "COMPLETED_PASS",
+      "artifact": "reports/phase7_policy_comparison.json"
+    }
+  ]
+}
